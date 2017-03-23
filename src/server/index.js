@@ -22,7 +22,7 @@ app.use(cookieSession({ secret: 'keyboardcat' }))
 // flow-disable-next-line
 const http = Server(app)
 const io = socketIO(http)
-setUpSocket(io)
+// setUpSocket(io)
 
 app.use(compression())
 app.use(STATIC_PATH, express.static('dist'))

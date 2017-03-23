@@ -10,6 +10,7 @@ import { AppContainer } from 'react-hot-loader'
 import { Provider } from 'react-redux'
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunkMiddleware  from 'redux-thunk'
+// import logger from 'redux-logger'
 import { BrowserRouter } from 'react-router-dom'
 
 import App from '../shared/app'
@@ -18,6 +19,7 @@ import createStoryReducer from '../shared/reducer/start-story'
 import { APP_CONTAINER_SELECTOR } from '../shared/config'
 import { isProd } from '../shared/util'
 
+// eslint-disable-next-line no-underscore-dangle
 const composeEnhancers = (isProd ? null : window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
 const preloadedState = window.__PRELOADED_STATE__
 

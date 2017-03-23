@@ -8,6 +8,7 @@ import { Form, FormGroup, FormControl, ControlLabel, Button} from 'react-bootstr
 // import Message from '../../container/message'
 import CreateStoryTitleField from '../../container/create-story-title'
 import StoryInfo from '../../container/create-story-info'
+import StartStoryButton from '../../container/start-story-button'
 
 
 const title = 'Create A Story'
@@ -24,8 +25,9 @@ const CreateStory = () =>
       <h1>{title}</h1>
       <p>This is where you create a story</p>
       <form>
-      <CreateStoryTitleField />
-    </form>
+        <CreateStoryTitleField />
+        <StartStoryButton />
+      </form>
      <StoryInfo />
     {/* <HelloButton />  */}
   </div>

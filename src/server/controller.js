@@ -6,7 +6,7 @@ export const homePage = () => null
 export const appIntroPage = () => null
 
 export const createStoryPage = () => ({
-  createStory: { title: 'Server-side preloaded title' }
+  createStory: { title: 'Server-side preloaded title'}
 })
 
 export const dashboardPage = () => null
@@ -33,3 +33,19 @@ export const helloEndpoint = function(num: number)  {
   return knex('users')
     .where('id', num)
 }
+
+// export const startNewStoryController = function(fbUserId: number) {
+//   return knex('users')
+//           .where('facebook_id', fbUserId)
+//           .then((rows) => {
+//             const user_id = rows[0].id
+//             const user_title = state.createStory.get('title')
+//             const bk_id = 1
+//             const insertNewStory = { user_id, user_title, bk_id }
+//             knex('user_book')
+//             .insert(insertNewStory, '*')
+//           })
+//
+//   //current user passed through from routing, title from state
+//   //find user in database
+// }

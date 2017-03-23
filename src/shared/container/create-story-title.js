@@ -7,7 +7,6 @@ import FormText from '../component/form-text'
 import { addTitle } from '../action/start-story'
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
   sectionTitle: 'storyText',
   controlLabel: 'Story Text',
@@ -18,7 +17,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => ({
   handleChange: (e) => {
-    console.log(e.target.value)
     dispatch(addTitle(e.target.value))
    },
 })

@@ -12,7 +12,6 @@ import { APP_CONTAINER_CLASS, STATIC_PATH, WDS_PORT } from '../shared/config'
 import { isProd } from '../shared/util'
 
 const renderApp = (location: string, plainPartialState: ?Object, routerContext: ?Object = {}) => {
-  console.log(plainPartialState)
   const store = initStore(plainPartialState)
   const appHtml = ReactDOMServer.renderToString(
     <Provider store={store}>

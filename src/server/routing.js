@@ -12,6 +12,7 @@ import {
   appIntroPage,
   createStoryPage,
   dashboardPage,
+  startNewStoryController,
   workArea
 } from './controller'
 
@@ -25,7 +26,9 @@ import {
   APP_INTRO_PAGE_ROUTE,
   CREATE_STORY_ROUTE,
   DASHBOARD_ROUTE,
-  WORK_AREA_ROUTE
+  WORK_AREA_ROUTE,
+  ENTER_NEW_STORY
+  // enterNewStoryRoute
 } from '../shared/routes'
 
 import renderApp from './render-app'
@@ -42,7 +45,10 @@ passport.use(new Strategy({
     }
 ));
 
+
 export default (app: Object) => {
+  // const token = ''
+
 
   app.get(HOME_PAGE_ROUTE, (req, res) => {
     res.send(renderApp(req.url, homePage()))
@@ -51,14 +57,50 @@ export default (app: Object) => {
   app.use(passport.initialize());
   app.use(passport.session());
 
+  // passport.serializeUser((object, done) => {
+  //   console.log("Serialize User", {token: object})
+  //   done(null, {token: object.token})
+  // })
+
   passport.serializeUser((object, done) => {
-    console.log("Serialize User", {token: object})
-    done(null, {token: object.token})
+  console.log("Serialize User", {token: object})
+
+  const facebook_id = object.profile.id;
+  const facebook_token = object.token;
+
+  const insertUser = {facebook_token: object.token, name: object.profile.displayName, facebook_id: object.profile.id }
+
+  knex('users')
+    .where('facebook_id', facebook_id)
+    .then((userObj) => {
+      if(userObj.length === 0) {
+        knex('users')
+        .insert(insertUser, '*')
+        .then((rows) => {
+          done(null, {token: object.token, facebook_id: object.profile.id})
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+      }
+      else {
+        knex('users')
+          .where('facebook_id', facebook_id)
+          .update('facebook_token', facebook_token)
+          .then((response) =>{
+            done(null, {token: object.token, facebook_id: object.profile.id})
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
+
+    })
   })
 
   passport.deserializeUser((object, done) => {
-  console.log("Deserialize User", object)
-  done(null, object)
+    console.log("Deserialize User", object)
+    done(null, object)
   })
 
   app.get(LOGIN_PAGE_ROUTE, passport.authenticate('facebook'))
@@ -93,8 +135,45 @@ export default (app: Object) => {
  })
 
  app.get(CREATE_STORY_ROUTE, ensureAuthenticated, (req, res) => {
+   console.log(req.session);
+   const fbUserId = req.session.passport.user.facebook_id
    res.send(renderApp(req.url, createStoryPage()))
  })
+
+ app.post(ENTER_NEW_STORY, (req, res) => {
+   console.log('in ENTER_NEW_STORY route')
+   console.log('req session', req.session)
+
+   const fbUserId = req.session.passport.user.facebook_id
+
+  //  startNewStoryController(fbUserId)
+    knex('users')
+      .where('facebook_id', fbUserId)
+        .then((rows) => {
+          const user_id = rows[0].id
+          // const user_title = state.createStory.get('title')
+          const user_title = 1
+          const bk_id = 1
+          const insertNewStory = { user_id, user_title, bk_id }
+          console.log('insert new story', insertNewStory)
+          knex('user_book')
+           .insert(insertNewStory, '*')
+           .then((rows) => {
+             console.log('new story made', rows)
+             console.log('create story', JSON.stringify(rows[0].user_title))
+             res.json({newStory: JSON.stringify(rows[0].user_title)})
+           })
+         .catch((err) => {
+           console.log(err)
+         })
+       })
+     })
+
+ // app.get(ENTER_NEW_STORY, ensureAuthenticated, (req, res) => {
+ //
+ //   //use method in controller and pass in user
+ //
+ // })
 
  app.get(DASHBOARD_ROUTE, ensureAuthenticated, (req, res) => {
    res.send(renderApp(req.url, dashboardPage()))
@@ -116,10 +195,16 @@ export default (app: Object) => {
  app.get(helloEndpointRoute(), (req, res) => {
       helloEndpoint(req.params.num)
       .then((rows) => {
-        console.log(JSON.stringify(rows[0].name))
         res.json({serverMessage: JSON.stringify(rows[0].name)})
       })
   })
+
+  // app.post(, (req, res) => {
+  //   startNewStory()
+  //   .then((rows) => {
+  //     res.json({newStory: JSON.stringify(rows[0])})
+  //   })
+  // })
 
 // app.get(helloEndpointRoute(), (req, res) => {
 //    req.params.num
