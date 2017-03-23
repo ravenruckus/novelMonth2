@@ -14,6 +14,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 import App from '../shared/app'
 import helloReducer from '../shared/reducer/hello'
+import createStoryReducer from '../shared/reducer/start-story'
 import { APP_CONTAINER_SELECTOR } from '../shared/config'
 import { isProd } from '../shared/util'
 
@@ -21,8 +22,8 @@ const composeEnhancers = (isProd ? null : window.__REDUX_DEVTOOLS_EXTENSION_COMP
 const preloadedState = window.__PRELOADED_STATE__
 
 const store = createStore(combineReducers(
-  { hello: helloReducer}),
-  { hello: Immutable.fromJS(preloadedState.hello) },
+  { hello: helloReducer, createStory: createStoryReducer }),
+  { hello: Immutable.fromJS(preloadedState.hello), createStory: Immutable.fromJS(preloadedState.createStory) },
   composeEnhancers(applyMiddleware(thunkMiddleware)))
 
 const rootEl = document.querySelector(APP_CONTAINER_SELECTOR)

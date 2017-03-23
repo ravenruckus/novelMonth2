@@ -5,6 +5,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 
 import helloReducer from '../shared/reducer/hello'
+import createStoryReducer from '../shared/reducer/start-story'
 
 const initStore = (plainPartialState: ?Object) => {
   const preloadedState = plainPartialState ? {} : undefined
@@ -15,7 +16,7 @@ const initStore = (plainPartialState: ?Object) => {
       .merge(Immutable.fromJS(plainPartialState.hello))
   }
 
-  return createStore(combineReducers({ hello: helloReducer }),
+  return createStore(combineReducers({ hello: helloReducer, createStory: createStoryReducer }),
     preloadedState, applyMiddleware(thunkMiddleware))
 }
 

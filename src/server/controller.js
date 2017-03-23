@@ -5,7 +5,9 @@ export const homePage = () => null
 
 export const appIntroPage = () => null
 
-export const createStoryPage = () => null
+export const createStoryPage = () => ({
+  createStory: { title: 'Server-side preloaded title' }
+})
 
 export const dashboardPage = () => null
 
@@ -15,8 +17,8 @@ export const workArea = () => null
 //   hello: { message: 'Server-side preloaded message' },
 // })
 export const helloPage = function() {
-  const hello = { message: 'Server-side preloaded message' }
-  console.log(hello)
+   return { hello: { message: 'Server-side preloaded message' }}
+  // console.log(hello)
 }
 
 export const helloAsyncPage = () => ({
