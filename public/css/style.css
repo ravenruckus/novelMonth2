@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Dynalight');
 body {
   width: 960px;
   margin: auto;
@@ -6,4 +7,11 @@ body {
 
 h1 {
   color: limegreen;
+}
+
+.userTitle {
+  color: blue;
+  font-family: 'Dynalight', cursive;
+  font-size: 3rem;
+  color: rgb(13, 87, 198);
 }

@@ -13,6 +13,7 @@ exports.up = function(knex) {
       .inTable('user_book')
       .onDelete('CASCADE')
       .index();
+  table.text('data').notNullable().default('');
   table.integer('piece_num').notNullable().default(0);
   table.boolean('completed').default(false);
   })

@@ -3,8 +3,8 @@
 // import 'isomorphic-fetch'
 
 import { createAction } from 'redux-actions'
-import { ENTER_NEW_STORY } from '../../shared/routes'
-// import { enterNewStoryRoute } from '../../shared/routes'
+// import { ENTER_NEW_STORY } from '../../shared/routes'
+import { enterNewStoryRoute } from '../../shared/routes'
 
 // import { helloEndpointRoute } from '../../shared/routes'
 
@@ -19,13 +19,14 @@ export const startStoryRequest = createAction(START_STORY_REQUEST)
 export const startStorySuccess = createAction(START_STORY_SUCCESS)
 export const startStoryFailure = createAction(START_STORY_FAILURE)
 
-export const startStoryActions = (storyTitle: string) => (dispatch: Function) => {
-  console.log(' in startStoryActions')
+export const startStoryActions = (storyTitle: string) => (dispatch: Function, getstate: Function) => {
+  console.log(' in startStoryActions', getstate())
+  const storyTitle = getstate().createStory.get('title')
   dispatch(startStoryRequest())
-   return fetch(ENTER_NEW_STORY, { method: 'POST',
+   return fetch(enterNewStoryRoute(storyTitle), { method: 'POST',
   credentials: 'same-origin' })
     .then((res) => {
-      console.log('in fetch then')
+      console.log('in fetch then', res)
       if (!res.ok) throw Error(res.statusText)
       return res.json()
     })
@@ -37,4 +38,3 @@ export const startStoryActions = (storyTitle: string) => (dispatch: Function) =>
       dispatch(startStoryFailure())
     })
 }
-//createAction() pass string to type as string, but payload is added on dispatch

@@ -49,3 +49,25 @@ export const helloEndpoint = function(num: number)  {
 //   //current user passed through from routing, title from state
 //   //find user in database
 // }
+
+// export const startNewStoryController = function(fbUserId: number, user_title: string)  {
+//
+//   knex('users')
+//     .where('facebook_id', fbUserId)
+//       .then((rows) => {
+//         const user_id = rows[0].id
+//         const bk_id = 1
+//         const insertNewStory = { user_id, user_title, bk_id }
+//         console.log('insert new story', insertNewStory)
+//         knex('user_book')
+//          .insert(insertNewStory, '*')
+//      })
+//      .then((rows) => {
+//        console.log('new story made', rows)
+//        console.log('create story', JSON.stringify(rows[0].user_title))
+//        res.json({newStory: JSON.stringify(rows[0].user_title)})
+//      })
+//      .catch((err) => {
+//        console.log(err)
+//      })
+// }

@@ -27,8 +27,8 @@ import {
   CREATE_STORY_ROUTE,
   DASHBOARD_ROUTE,
   WORK_AREA_ROUTE,
-  ENTER_NEW_STORY
-  // enterNewStoryRoute
+  ENTER_NEW_STORY,
+  enterNewStoryRoute
 } from '../shared/routes'
 
 import renderApp from './render-app'
@@ -140,19 +140,17 @@ export default (app: Object) => {
    res.send(renderApp(req.url, createStoryPage()))
  })
 
- app.post(ENTER_NEW_STORY, (req, res) => {
+ app.post(enterNewStoryRoute(), ensureAuthenticated, (req, res) => {
    console.log('in ENTER_NEW_STORY route')
-   console.log('req session', req.session)
-
    const fbUserId = req.session.passport.user.facebook_id
+   const user_title = req.params.storyTitle
 
-  //  startNewStoryController(fbUserId)
+  //  startNewStoryController(fbUserId, user_title)
+
     knex('users')
       .where('facebook_id', fbUserId)
         .then((rows) => {
           const user_id = rows[0].id
-          // const user_title = state.createStory.get('title')
-          const user_title = 1
           const bk_id = 1
           const insertNewStory = { user_id, user_title, bk_id }
           console.log('insert new story', insertNewStory)
@@ -168,12 +166,6 @@ export default (app: Object) => {
          })
        })
      })
-
- // app.get(ENTER_NEW_STORY, ensureAuthenticated, (req, res) => {
- //
- //   //use method in controller and pass in user
- //
- // })
 
  app.get(DASHBOARD_ROUTE, ensureAuthenticated, (req, res) => {
    res.send(renderApp(req.url, dashboardPage()))
@@ -198,17 +190,6 @@ export default (app: Object) => {
         res.json({serverMessage: JSON.stringify(rows[0].name)})
       })
   })
-
-  // app.post(, (req, res) => {
-  //   startNewStory()
-  //   .then((rows) => {
-  //     res.json({newStory: JSON.stringify(rows[0])})
-  //   })
-  // })
-
-// app.get(helloEndpointRoute(), (req, res) => {
-//    req.params.num
-// })
 
  app.get('/500', () => {
    throw Error('Fake Internal Server Error')
