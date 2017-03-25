@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link} from 'react-router-dom'
 import {
   HOME_PAGE_ROUTE,
   HELLO_PAGE_ROUTE,
@@ -12,7 +12,7 @@ import {
 }
 from '../routes'
 
-const Nav = () =>
+const DashboardNav = () =>
   <nav>
     <ul>
       {[
@@ -24,10 +24,10 @@ const Nav = () =>
         { route: NOT_FOUND_DEMO_PAGE_ROUTE, label: '404 Demo' },
       ].map(link => (
         <li key={link.route}>
-          <NavLink to={link.route} activeStyle={{ color: 'limegreen' }} exact>{link.label}</NavLink>
+          <Link to={link.route} activeStyle={{ color: 'limegreen' }} exact>{link.label}</Link>
         </li>
       ))}
     </ul>
   </nav>
 
-export default Nav
+export default DashboardNav

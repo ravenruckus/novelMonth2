@@ -33,7 +33,7 @@ const App = () =>
       <Route exact path={HOME_PAGE_ROUTE} render={() => <HomePage />} />
       <Route path={APP_INTRO_PAGE_ROUTE} render={() => <AppIntro />} />
       <Route path={CREATE_STORY_ROUTE} render={() => <CreateStory />} />
-      <Route path={DASHBOARD_ROUTE} render={() => <Dashboard />} />
+      <Route path={DASHBOARD_ROUTE} render={({match}) => <Dashboard match={match} />} />
       <Route path={WORK_AREA_ROUTE} render={({match}) => <WorkArea match={match} />} />
       <Route path={HELLO_PAGE_ROUTE} render={() => <HelloPage />} />
       <Route path={HELLO_ASYNC_PAGE_ROUTE} render={() => <HelloAsyncPage />} />

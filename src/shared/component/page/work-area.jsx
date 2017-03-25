@@ -23,7 +23,7 @@ const WorkArea = ({ match }) =>
     />
     <h1>{title}</h1>
     <p>This is where you work on a section of the story.</p>
-    <p>{match.params.originalPieceId}</p>
+    <p>{ typeof match.params.originalPieceId}</p>
     <p>{match.params.userBookId}</p>
     <p>{match.params.pieceNumber}</p>
 

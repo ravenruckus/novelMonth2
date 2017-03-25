@@ -37,7 +37,6 @@ export const startStoryActions = (storyTitle: string) => (dispatch: Function, ge
       dispatch(startStorySuccess(data.newStory))
       console.log(' after success dispatch', getstate())
 
-
     })
     .catch(() => {
       dispatch(startStoryFailure())

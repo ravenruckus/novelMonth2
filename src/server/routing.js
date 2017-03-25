@@ -47,6 +47,27 @@ passport.use(new Strategy({
     }
 ));
 
+const ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
+
+const tone_analyzer = new ToneAnalyzerV3({
+  username: process.env.USERNAME,
+  password: process.env.PASSWORD,
+  version_date: '2016-05-19'
+});
+
+const Analyze = function(newText) {
+  return new Promise((resolve, reject) => {
+    tone_analyzer.tone({ text: newText}, function(err, tone) {
+    if (err) {
+      console.log(err);
+    } else {
+    resolve(JSON.stringify(tone, null, 2));
+  }
+  })
+ })
+}
+
+
 
 export default (app: Object) => {
   // const token = ''
@@ -170,27 +191,59 @@ export default (app: Object) => {
      })
 
  app.post(analyzePieceRoute(), (req, res) => {
-   console.log(req.params)
+  //  console.log(req.params)
    const original_piece_id = req.params.originalPieceId
    const user_book_id = req.params.userBookId
    const piece_num = req.params.pieceNumber
-   const data = req.params.text
+   const text = req.params.text
    const micro_piece_1 = req.params.micro_piece_1
    const micro_piece_2 = req.params.micro_piece_2
    const micro_piece_3 = req.params.micro_piece_3
    const completed = req.params.completed
 
-   const insertPiece = {original_piece_id, user_book_id, data, piece_num, micro_piece_1, micro_piece_3, completed }
+   Analyze(text)
+    .then((obj) => {
 
-   knex('user_pieces')
-    .insert(insertPiece, '*')
-    .then((rows) => {
-      res.json(JSON.stringify(rows[0]))
+      const data = obj
+
+      const insertPiece = {original_piece_id, user_book_id, data, piece_num, micro_piece_1, micro_piece_3, completed }
+      // console.log('insert piece', insertPiece)
+      return knex('user_pieces')
+       .insert(insertPiece, '*')
     })
+    .then((rows) => {
+      res.json({writeStory: JSON.stringify(rows[0].data)})
+  })
     .catch((err) => {
       console.log(err)
     })
- })
+  })
+
+
+ // app.post(analyzePieceRoute(), (req, res) => {
+ //  //  console.log(req.params)
+ //   const original_piece_id = req.params.originalPieceId
+ //   const user_book_id = req.params.userBookId
+ //   const piece_num = req.params.pieceNumber
+ //   const data = req.params.text
+ //   const micro_piece_1 = req.params.micro_piece_1
+ //   const micro_piece_2 = req.params.micro_piece_2
+ //   const micro_piece_3 = req.params.micro_piece_3
+ //   const completed = req.params.completed
+ //
+ //
+ //    const insertPiece = {original_piece_id, user_book_id, data, piece_num, micro_piece_1, micro_piece_3, completed }
+ //      // console.log('insert piece', insertPiece)
+ //      knex('user_pieces')
+ //       .insert(insertPiece, '*')
+ //    .then((rows) => {
+ //      res.json({writeStory: JSON.stringify(rows[0].data)})
+ //  })
+ //    .catch((err) => {
+ //      console.log(err)
+ //    })
+ //  })
+
 
  app.get(DASHBOARD_ROUTE, ensureAuthenticated, (req, res) => {
    res.send(renderApp(req.url, dashboardPage()))
