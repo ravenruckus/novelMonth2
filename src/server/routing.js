@@ -28,7 +28,9 @@ import {
   DASHBOARD_ROUTE,
   WORK_AREA_ROUTE,
   ENTER_NEW_STORY,
-  enterNewStoryRoute
+  enterNewStoryRoute,
+  workAreaSingleRoute,
+  analyzePieceRoute
 } from '../shared/routes'
 
 import renderApp from './render-app'
@@ -145,7 +147,7 @@ export default (app: Object) => {
    const fbUserId = req.session.passport.user.facebook_id
    const user_title = req.params.storyTitle
 
-  //  startNewStoryController(fbUserId, user_title)
+  //  res.json(startNewStoryController(fbUserId, user_title))
 
     knex('users')
       .where('facebook_id', fbUserId)
@@ -167,13 +169,36 @@ export default (app: Object) => {
        })
      })
 
+ app.post(analyzePieceRoute(), (req, res) => {
+   console.log(req.params)
+   const original_piece_id = req.params.originalPieceId
+   const user_book_id = req.params.userBookId
+   const piece_num = req.params.pieceNumber
+   const data = req.params.text
+   const micro_piece_1 = req.params.micro_piece_1
+   const micro_piece_2 = req.params.micro_piece_2
+   const micro_piece_3 = req.params.micro_piece_3
+   const completed = req.params.completed
+
+   const insertPiece = {original_piece_id, user_book_id, data, piece_num, micro_piece_1, micro_piece_3, completed }
+
+   knex('user_pieces')
+    .insert(insertPiece, '*')
+    .then((rows) => {
+      res.json(JSON.stringify(rows[0]))
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+ })
+
  app.get(DASHBOARD_ROUTE, ensureAuthenticated, (req, res) => {
    res.send(renderApp(req.url, dashboardPage()))
  })
 
- app.get(WORK_AREA_ROUTE, ensureAuthenticated, (req, res) => {
-   res.send(renderApp(req.url, workArea()))
- })
+ // app.get(WORK_AREA_ROUTE, ensureAuthenticated, (req, res) => {
+ //   res.send(renderApp(req.url, workArea()))
+ // })
 
  app.get(HELLO_PAGE_ROUTE, (req, res) => {
    res.send(renderApp(req.url, helloPage()))
@@ -190,6 +215,7 @@ export default (app: Object) => {
         res.json({serverMessage: JSON.stringify(rows[0].name)})
       })
   })
+
 
  app.get('/500', () => {
    throw Error('Fake Internal Server Error')

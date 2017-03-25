@@ -7,7 +7,8 @@ import { Route } from 'react-router-dom'
 import Nav from './component/nav'
 import HomePage from './component/page/home'
 import AppIntro from './component/page/app-intro'
-import CreateStory from './component/page/create-story'
+// import CreateStory from './component/page/create-story'
+import CreateStory from './container/create-story-container'
 import Dashboard from './component/page/dashboard'
 import WorkArea from './component/page/work-area'
 import HelloPage from './component/page/hello'
@@ -33,7 +34,7 @@ const App = () =>
       <Route path={APP_INTRO_PAGE_ROUTE} render={() => <AppIntro />} />
       <Route path={CREATE_STORY_ROUTE} render={() => <CreateStory />} />
       <Route path={DASHBOARD_ROUTE} render={() => <Dashboard />} />
-      <Route path={WORK_AREA_ROUTE} render={() => <WorkArea />} />
+      <Route path={WORK_AREA_ROUTE} render={({match}) => <WorkArea match={match} />} />
       <Route path={HELLO_PAGE_ROUTE} render={() => <HelloPage />} />
       <Route path={HELLO_ASYNC_PAGE_ROUTE} render={() => <HelloAsyncPage />} />
       <Route component={NotFoundPage} />

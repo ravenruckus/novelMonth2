@@ -27,6 +27,7 @@ const renderApp = (location: string, plainPartialState: ?Object, routerContext: 
       <head>
         ${head.title}
         ${head.meta}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
         <link rel="stylesheet" href="${STATIC_PATH}/css/style.css">
       </head>
       <body>

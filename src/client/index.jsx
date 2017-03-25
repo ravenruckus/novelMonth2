@@ -10,12 +10,12 @@ import { AppContainer } from 'react-hot-loader'
 import { Provider } from 'react-redux'
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunkMiddleware  from 'redux-thunk'
-// import logger from 'redux-logger'
 import { BrowserRouter } from 'react-router-dom'
 
 import App from '../shared/app'
 import helloReducer from '../shared/reducer/hello'
 import createStoryReducer from '../shared/reducer/start-story'
+import writeStoryReducer from '../shared/reducer/write-story'
 import { APP_CONTAINER_SELECTOR } from '../shared/config'
 import { isProd } from '../shared/util'
 
@@ -24,8 +24,8 @@ const composeEnhancers = (isProd ? null : window.__REDUX_DEVTOOLS_EXTENSION_COMP
 const preloadedState = window.__PRELOADED_STATE__
 
 const store = createStore(combineReducers(
-  { hello: helloReducer, createStory: createStoryReducer }),
-  { hello: Immutable.fromJS(preloadedState.hello), createStory: Immutable.fromJS(preloadedState.createStory) },
+  { hello: helloReducer, createStory: createStoryReducer, writeStory: writeStoryReducer }),
+  { hello: Immutable.fromJS(preloadedState.hello), createStory: Immutable.fromJS(preloadedState.createStory), writeStory: Immutable.fromJS(preloadedState.writeStory) },
   composeEnhancers(applyMiddleware(thunkMiddleware)))
 
 const rootEl = document.querySelector(APP_CONTAINER_SELECTOR)

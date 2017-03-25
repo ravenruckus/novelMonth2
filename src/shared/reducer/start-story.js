@@ -21,9 +21,9 @@ const createStoryReducer = (state: Immut = initialState, action: { type: string,
     case ADD_TITLE:
       return state.set('title', action.payload)
     case START_STORY_REQUEST:
-      return state.set('newStory', 'Loading...')
+      return state.set('newStory', '')
     case START_STORY_SUCCESS:
-      return state.set('title', '')
+      return state.set('newStory', action.payload)
     case START_STORY_FAILURE:
       return state.set('newStory', 'No message received, please check your connection')
     default:

@@ -10,4 +10,4 @@ const mapStateToProps = state => ({
 })
 
 
-export default connect(mapStateToProps)(H2)
+export default connect(mapStateToProps)(H2) 

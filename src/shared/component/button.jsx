@@ -4,11 +4,11 @@ import React from 'react'
 
 type Props = {
   label: string,
-  enterTitle: string,
+  enterText: string,
   handleClick: Function
 }
 
-const Button = ({ label, handleClick, enterTitle }: Props) =>
+const Button = ({ label, handleClick, enterText }: Props) =>
   <button onClick={handleClick}>{label}</button>
 
 export default Button

@@ -2,7 +2,7 @@
 exports.up = function(knex) {
   return knex.schema.createTable('user_pieces', (table) => {
     table.increments();
-    table.integer('original_pieces_id')
+    table.integer('original_piece_id')
       .notNullable()
       .references('id')
       .inTable('original_pieces')
@@ -15,6 +15,9 @@ exports.up = function(knex) {
       .index();
   table.text('data').notNullable().default('');
   table.integer('piece_num').notNullable().default(0);
+  table.boolean('micro_piece_1').notNullable().default(false);
+  table.boolean('micro_piece_2').notNullable().default(false);
+  table.boolean('micro_piece_3').notNullable().default(false);
   table.boolean('completed').default(false);
   })
 };

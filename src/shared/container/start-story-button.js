@@ -7,7 +7,7 @@ import Button from '../component/button'
 
 const mapStateToProps = (state) => ({
   label: 'Initiate New Story',
-  enterTitle: state.createStory.get('title')
+  enterText: state.createStory.get('title')
 })
 
 const mapDispatchToProps = dispatch => ({

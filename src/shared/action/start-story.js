@@ -1,6 +1,6 @@
 // @flow
 
-// import 'isomorphic-fetch'
+import 'isomorphic-fetch'
 
 import { createAction } from 'redux-actions'
 // import { ENTER_NEW_STORY } from '../../shared/routes'
@@ -32,7 +32,12 @@ export const startStoryActions = (storyTitle: string) => (dispatch: Function, ge
     })
     .then((data) => {
       if (!data.newStory) throw Error('No new story received')
+      // console.log(' about to dispatach success', getstate())
+      // console.log('data before success', data.newStory)
       dispatch(startStorySuccess(data.newStory))
+      console.log(' after success dispatch', getstate())
+
+
     })
     .catch(() => {
       dispatch(startStoryFailure())
