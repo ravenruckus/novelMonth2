@@ -10,6 +10,9 @@ import {
   ANALYZE_PIECE1_REQUEST,
   ANALYZE_PIECE1_SUCCESS,
   ANALYZE_PIECE1_FAILURE,
+  HIDE_TONE,
+  SHOW_TONE,
+  CHANGE_SENTENCE_ID,
 } from '../action/write-story'
 
 const initialState = Immutable.fromJS({
@@ -20,6 +23,8 @@ const initialState = Immutable.fromJS({
   analyze2: '',
   analyze3: '',
   loading: '',
+  toneView: 'none',
+  sentenceId: 0,
 })
 
 const writeStoryReducer = (state: Immut = initialState, action: { type: string, payload: any }) => {
@@ -36,6 +41,12 @@ const writeStoryReducer = (state: Immut = initialState, action: { type: string, 
         return state.set('analyze1', action.payload).set('loading', '')
     case  ANALYZE_PIECE1_FAILURE:
         return state.set('analyze1', ['no data'])
+    case HIDE_TONE:
+        return state.set('toneView', 'none')
+    case SHOW_TONE:
+        return state.set('toneView', 'inline-block')
+    case CHANGE_SENTENCE_ID:
+        return state.set('sentenceId', action.payload)
     // case START_STORY_REQUEST:
     //   return state.set('newStory', 'Loading...')
     // case START_STORY_SUCCESS:

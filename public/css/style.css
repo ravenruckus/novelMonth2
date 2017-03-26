@@ -20,11 +20,3 @@ h1 {
 textarea.form-control {
   height: 300px;
 }
-
-.tonesHide {
-  display: none;
-}
-
-.tonesShow {
-  display: inline;
-}

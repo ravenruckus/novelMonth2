@@ -15,6 +15,6 @@ const mapDispatchToProps = dispatch => ({
   handleClick: (e, originalPieceId, userBookId, pieceNumber) => {
     e.preventDefault()
     dispatch(analyzeStoryActions1(originalPieceId, userBookId, pieceNumber)) },
-})
+}) 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Button)

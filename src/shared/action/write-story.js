@@ -20,6 +20,10 @@ export const ANALYZE_PIECE1 = 'ANALYZE_PIECE1'
 export const ANALYZE_PIECE2 = 'ANALYZE_PIECE2'
 export const ANALYZE_PIECE3 = 'ANALYZE_PIECE3'
 
+export const SHOW_TONE = 'SHOW_TONE'
+export const HIDE_TONE = 'HIDE_TONE'
+export const CHANGE_SENTENCE_ID = 'CHANGE_SENTENCE_ID'
+
 export const analyzePiece1Request = createAction(ANALYZE_PIECE1_REQUEST)
 export const analyzePiece1Success = createAction(ANALYZE_PIECE1_SUCCESS)
 export const analyzePiece1Failure = createAction(ANALYZE_PIECE1_FAILURE)
@@ -30,6 +34,10 @@ export const addPiece3 = createAction(ADD_PIECE3)
 export const analyzePiece1 = createAction(ANALYZE_PIECE1)
 export const analyzePiece2 = createAction(ANALYZE_PIECE2)
 export const analyzePiece3 = createAction(ANALYZE_PIECE3)
+
+export const showTone = createAction(SHOW_TONE)
+export const hideTone = createAction(HIDE_TONE)
+export const changeSentenceId = createAction(CHANGE_SENTENCE_ID)
 
 
 export const analyzeStoryActions1 = (originalPieceId: number, userBookId: number, pieceNumber: num) => (dispatch: Function, getstate: Function) => {
@@ -64,6 +72,15 @@ export const analyzeStoryActions1 = (originalPieceId: number, userBookId: number
         dispatch(analyzePiece1Failure())
         console.log('after failure', getstate())
       })
+  }
+
+  export const changeToneView = () => (dispatch: Function, getstate: Function) => {
+    const tone = getstate().writeStory.get('toneView')
+    tone == "none" ? dispatch(showTone()) : dispatch(hideTone())
+  }
+
+  export const startChangeSentenceId = (sentence_id: number) => (dispatch: Function) => {
+    dispatch(changeSentenceId(sentence_id))
   }
 
 

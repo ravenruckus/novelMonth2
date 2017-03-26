@@ -7,7 +7,7 @@ type Props = {
   enterText: string,
   handleClick: Function
 }
-
+ 
 const Button = ({ label, handleClick, enterText }: Props) =>
   <button onClick={handleClick}>{label}</button>
 
