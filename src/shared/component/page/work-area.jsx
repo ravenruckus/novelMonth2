@@ -7,12 +7,17 @@ import Helmet from 'react-helmet'
 import EnterStory from '../../container/enter-story'
 import AnalyzeButton1 from '../../container/analyze-button1'
 import Test from '../../container/test'
+import Analyzed1 from '../../container/analyzed1'
 
 
 const title = 'Work Area'
 
+type Props = {
+  analyze1State: [],
+  loading: ''
+}
 
-const WorkArea = ({ match }) =>
+const WorkArea = ({ match, analyze1State, loading }) =>
   <div>
     <Helmet
       title={title}
@@ -21,16 +26,29 @@ const WorkArea = ({ match }) =>
         { property: 'og:title', content: title },
       ]}
     />
+
     <h1>{title}</h1>
-    <p>This is where you work on a section of the story.</p>
-    <p>{ typeof match.params.originalPieceId}</p>
-    <p>{match.params.userBookId}</p>
-    <p>{match.params.pieceNumber}</p>
 
+     { loading ?
+      <h3>Analyzing your story now.</h3>
+       :
+      <h3></h3>
+    }
 
-    <Test />
-    <EnterStory />
-    <AnalyzeButton1 originalPieceId={match.params.originalPieceId} userBookId={match.params.userBookId} pieceNumber={match.params.pieceNumber} />
+    {/* <Test /> */}
+
+    { analyze1State.length ?
+    <div>
+      <h2>Analyzed</h2>
+      <Analyzed1 />
+    </div>
+      :
+    <div>
+      <EnterStory />
+      <AnalyzeButton1 originalPieceId={match.params.originalPieceId} userBookId={match.params.userBookId} pieceNumber={match.params.pieceNumber} />
+    </div>
+    }
+
   </div>
 
 export default WorkArea

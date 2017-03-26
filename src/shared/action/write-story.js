@@ -51,10 +51,14 @@ export const analyzeStoryActions1 = (originalPieceId: number, userBookId: number
         return res.json()
       })
       .then((data) => {
-        console.log('before succes dispatch', data)
-        if (!data.writeStory) throw Error('No story piece received')
-        dispatch(analyzePiece1Success(data.writeStory))
-        console.log('after anaylze success', data.writeStory)
+        console.log('data before success dispatch', data)
+        console.log('state before succes dispatch', getstate())
+        // if (!data.writeStory) throw Error('No story piece received')
+        const sentences = data.data.sentences_tone
+        console.log('sentences', sentences)
+
+        dispatch(analyzePiece1Success(sentences))
+        console.log('after anaylze success', getstate())
       })
       .catch(() => {
         dispatch(analyzePiece1Failure())

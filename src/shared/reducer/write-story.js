@@ -9,16 +9,17 @@ import {
   ADD_PIECE3,
   ANALYZE_PIECE1_REQUEST,
   ANALYZE_PIECE1_SUCCESS,
-  ANALYZE_PIECE1_FAILURE
+  ANALYZE_PIECE1_FAILURE,
 } from '../action/write-story'
 
 const initialState = Immutable.fromJS({
   piece1: '',
   piece2: '',
   piece3: '',
-  analyze1: '',
+  analyze1: [],
   analyze2: '',
   analyze3: '',
+  loading: '',
 })
 
 const writeStoryReducer = (state: Immut = initialState, action: { type: string, payload: any }) => {
@@ -30,11 +31,11 @@ const writeStoryReducer = (state: Immut = initialState, action: { type: string, 
     case ADD_PIECE3:
       return state.set('piece3', action.payload)
     case ANALYZE_PIECE1_REQUEST:
-      return state.set('analyze1', 'Loading')
+      return state.set('loading', 'loading')
     case ANALYZE_PIECE1_SUCCESS:
-        return state.set('analyze1', action.payload)
+        return state.set('analyze1', action.payload).set('loading', '')
     case  ANALYZE_PIECE1_FAILURE:
-        return state.set('analyze1', 'No story piece received, please check your connection')
+        return state.set('analyze1', ['no data'])
     // case START_STORY_REQUEST:
     //   return state.set('newStory', 'Loading...')
     // case START_STORY_SUCCESS:

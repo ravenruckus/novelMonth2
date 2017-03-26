@@ -212,7 +212,10 @@ export default (app: Object) => {
        .insert(insertPiece, '*')
     })
     .then((rows) => {
-      res.json({writeStory: JSON.stringify(rows[0].data)})
+      const parsedData = JSON.parse(rows[0].data)
+      console.log('trying to get an object', typeof parsedData)
+      console.log('in then after insert', typeof rows[0].data)
+      res.send({data: parsedData})
   })
     .catch((err) => {
       console.log(err)
