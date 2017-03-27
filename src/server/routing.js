@@ -13,7 +13,7 @@ import {
   createStoryPage,
   dashboardPage,
   startNewStoryController,
-  workArea
+  workArea,
 } from './controller'
 
 import {
@@ -30,8 +30,11 @@ import {
   ENTER_NEW_STORY,
   enterNewStoryRoute,
   workAreaSingleRoute,
-  analyzePieceRoute
+  analyzePieceRoute,
+  getPieceRoute,
+  deletePieceRoute
 } from '../shared/routes'
+
 
 import renderApp from './render-app'
 
@@ -68,9 +71,7 @@ const Analyze = function(newText) {
 }
 
 
-
 export default (app: Object) => {
-  // const token = ''
 
 
   app.get(HOME_PAGE_ROUTE, (req, res) => {
@@ -275,11 +276,46 @@ export default (app: Object) => {
     })
   })
 
-  // app.get(getPiectRoute(), (req, res) => {
-  //   knex('user_pieces')
-  //
-  // })
 
+  app.get(helloEndpointRoute(), (req, res) => {
+       helloEndpoint(req.params.num)
+       .then((rows) => {
+         res.json({serverMessage: JSON.stringify(rows[0].name)})
+       })
+   })
+
+
+   app.get(getPieceRoute(), (req, res) => {
+     // const userBookId = req.params.userBookId
+    const piece_num = req.params.pieceNumber
+    // const micro_piece_1 = 't'
+    const userBookId = req.params.userBookId
+
+    knex('user_pieces')
+    // .where('user_book_id', 61)
+    .where({user_book_id: userBookId, piece_num: piece_num, micro_piece_1: 't'})
+      // .where({id: id, piece_num: piece_num, micro_piece_1: 't'})
+    .then((rows) => {
+        // res.send(rows)
+        res.send({data: JSON.parse(rows[0].data)})
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  })
+
+  app.delete(deletePieceRoute(), (req, res) => {
+    const id = req.params.userPieceId
+    knex('user_pieces')
+      .where('id', id)
+      .then((rows) => {
+        res.send(rows[0])
+      })
+  })
+
+// app.get(test(), (req, res) => {
+//   res.send('hello from api')
+// })
 
 
  // app.post(analyzePieceRoute(), (req, res) => {
@@ -311,9 +347,9 @@ export default (app: Object) => {
    res.send(renderApp(req.url, dashboardPage()))
  })
 
- // app.get(WORK_AREA_ROUTE, ensureAuthenticated, (req, res) => {
- //   res.send(renderApp(req.url, workArea()))
- // })
+ app.get(WORK_AREA_ROUTE, ensureAuthenticated, (req, res) => {
+   res.send(renderApp(req.url, workArea()))
+ })
 
  app.get(HELLO_PAGE_ROUTE, (req, res) => {
    res.send(renderApp(req.url, helloPage()))

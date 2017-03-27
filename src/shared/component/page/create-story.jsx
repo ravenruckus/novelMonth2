@@ -45,7 +45,7 @@ const CreateStory = ({ newStory, newStoryId }: Props) =>
       //   <h1>New story started {newStory}</h1>
       //   <h2>Story id {newStoryId} </h2>
       // </div>
-        <Redirect push to={`/work-area/1/${newStoryId}/1/${newStory}`}>Test two</Redirect>
+        <Redirect push to={`/work-area/1/${newStoryId}/1/`}>Test two</Redirect>
 
        :
         <div>

@@ -13,6 +13,9 @@ import {
   HIDE_TONE,
   SHOW_TONE,
   CHANGE_SENTENCE_ID,
+  GET_PIECE_DB1_REQUEST,
+  GET_PIECE_DB1_SUCCESS,
+  GET_PIECE_DB1_FAILURE,
 } from '../action/write-story'
 
 const initialState = Immutable.fromJS({
@@ -22,6 +25,9 @@ const initialState = Immutable.fromJS({
   analyze1: [],
   analyze2: '',
   analyze3: '',
+  analyzedDb1: [],
+  analyzedDb2: [],
+  analyzedDb3: [],
   loading: '',
   toneView: 'none',
   sentenceId: 0,
@@ -47,6 +53,14 @@ const writeStoryReducer = (state: Immut = initialState, action: { type: string, 
         return state.set('toneView', 'inline-block')
     case CHANGE_SENTENCE_ID:
         return state.set('sentenceId', action.payload)
+    case GET_PIECE_DB1_REQUEST:
+        return state.set('loading', 'loading')
+    case GET_PIECE_DB1_SUCCESS:
+      return state.set('analyzedDb1', action.payload)
+    // case GET_PIECE_DB1_SUCCESS:
+    //     return state.set('analyzedDb1', state.get('analyzedDb1').push(action.payload))
+    case GET_PIECE_DB1_FAILURE:
+        return state.set('analyzedDb1', [])
     default:
       return state
   }

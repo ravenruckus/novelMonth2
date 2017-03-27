@@ -9,7 +9,8 @@ import { changeSentenceId } from '../action/write-story'
 const mapStateToProps = state => ({
   analyzed: state.writeStory.get('analyze1'),
   toneView: state.writeStory.get('toneView'),
-  sentenceId: state.writeStory.get('sentenceId')
+  sentenceId: state.writeStory.get('sentenceId'),
+  analyzedDb: state.writeStory.get('analyzedDb1')
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -6,10 +6,13 @@ type Props = {
   analyzed: [],
   toneView: string,
   handleClick: Function,
-  sentenceId: number
+  sentenceId: number,
+  analyzedDb: []
 }
 
 const Analyzed = ({ analyzed, toneView, handleClick, sentenceId }: Props) =>
+
+
   <div>
 
     {

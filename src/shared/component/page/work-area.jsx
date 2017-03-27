@@ -9,6 +9,8 @@ import AnalyzeButton1 from '../../container/analyze-button1'
 import Test from '../../container/test'
 import Analyzed1 from '../../container/analyzed1'
 
+import MicroPieceOneDB from '../../component/micro-piece-one-db'
+
 
 const title = 'Work Area'
 
@@ -17,7 +19,9 @@ type Props = {
   loading: ''
 }
 
+
 const WorkArea = ({ match, analyze1State, loading }) =>
+
   <div>
     <Helmet
       title={title}
@@ -28,7 +32,19 @@ const WorkArea = ({ match, analyze1State, loading }) =>
     />
 
     <h1>{title}</h1>
-    <h2>{match.params.title}</h2>
+
+    {/* <MicroOne originalPieceId={match.params.originalPieceId} userBookId={match.params.userBookId} pieceNumber={match.params.pieceNumber} /> */}
+
+    {/* <p>originalPieceId{match.params.originalPieceId}</p>
+    <p> userbookid {match.params.userBookId}</p>
+    <p> pieceNumber {match.params.pieceNumber}</p> */}
+
+    <MicroPieceOneDB originalPieceId={match.params.originalPieceId} userBookId={match.params.userBookId} pieceNumber={match.params.pieceNumber}/>
+
+    <div>
+      <EnterStory />
+      <AnalyzeButton1 originalPieceId={match.params.originalPieceId} userBookId={match.params.userBookId} pieceNumber={match.params.pieceNumber} />
+    </div>
 
      { loading ?
       <h3>Analyzing your story now.</h3>
@@ -38,7 +54,7 @@ const WorkArea = ({ match, analyze1State, loading }) =>
 
     {/* <Test /> */}
 
-    { analyze1State.length ?
+    {/* { analyze1State.length ?
     <div>
       <h2>Analyzed</h2>
       <Analyzed1 />
@@ -48,7 +64,9 @@ const WorkArea = ({ match, analyze1State, loading }) =>
       <EnterStory />
       <AnalyzeButton1 originalPieceId={match.params.originalPieceId} userBookId={match.params.userBookId} pieceNumber={match.params.pieceNumber} />
     </div>
-    }
+    } */}
+
+    {/* <GetMicroOne userBookId={match.params.userBookId}/> */}
 
   </div>
 
