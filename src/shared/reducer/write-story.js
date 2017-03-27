@@ -47,12 +47,6 @@ const writeStoryReducer = (state: Immut = initialState, action: { type: string, 
         return state.set('toneView', 'inline-block')
     case CHANGE_SENTENCE_ID:
         return state.set('sentenceId', action.payload)
-    // case START_STORY_REQUEST:
-    //   return state.set('newStory', 'Loading...')
-    // case START_STORY_SUCCESS:
-    //   return state.set('title', '')
-    // case START_STORY_FAILURE:
-    //   return state.set('newStory', 'No message received, please check your connection')
     default:
       return state
   }

@@ -164,7 +164,6 @@ export default (app: Object) => {
  })
 
  app.post(enterNewStoryRoute(), ensureAuthenticated, (req, res) => {
-   console.log('in ENTER_NEW_STORY route')
    const fbUserId = req.session.passport.user.facebook_id
    const user_title = req.params.storyTitle
 
@@ -176,12 +175,9 @@ export default (app: Object) => {
           const user_id = rows[0].id
           const bk_id = 1
           const insertNewStory = { user_id, user_title, bk_id }
-          console.log('insert new story', insertNewStory)
           knex('user_book')
            .insert(insertNewStory, '*')
            .then((rows) => {
-             console.log('new story made', rows)
-             console.log('create story', JSON.stringify(rows[0].user_title))
              res.json({newStory: JSON.stringify(rows[0].user_title)})
            })
          .catch((err) => {
@@ -189,6 +185,38 @@ export default (app: Object) => {
          })
        })
      })
+
+ // app.post(analyzePieceRoute(), (req, res) => {
+ //  //  console.log(req.params)
+ //   const original_piece_id = req.params.originalPieceId
+ //   const user_book_id = req.params.userBookId
+ //   const piece_num = req.params.pieceNumber
+ //   const text = req.params.text
+ //   const micro_piece_1 = req.params.micro_piece_1
+ //   const micro_piece_2 = req.params.micro_piece_2
+ //   const micro_piece_3 = req.params.micro_piece_3
+ //   const completed = req.params.completed
+ //
+ //   Analyze(text)
+ //    .then((obj) => {
+ //
+ //      const data = obj
+ //
+ //      const insertPiece = {original_piece_id, user_book_id, data, piece_num, micro_piece_1, micro_piece_3, completed }
+ //      // console.log('insert piece', insertPiece)
+ //      return knex('user_pieces')
+ //       .insert(insertPiece, '*')
+ //    })
+ //    .then((rows) => {
+ //      const parsedData = JSON.parse(rows[0].data)
+ //      console.log('trying to get an object', typeof parsedData)
+ //      console.log('in then after insert', typeof rows[0].data)
+ //      res.send({data: parsedData})
+ //  })
+ //    .catch((err) => {
+ //      console.log(err)
+ //    })
+ //  })
 
  app.post(analyzePieceRoute(), (req, res) => {
   //  console.log(req.params)
@@ -204,7 +232,32 @@ export default (app: Object) => {
    Analyze(text)
     .then((obj) => {
 
-      const data = obj
+      const initialData = JSON.parse(obj)
+      const sentences = initialData.sentences_tone
+
+      const preData = []
+      for(const t of sentences) {
+
+        let color = 'white'
+
+         if (t.tone_categories[0].tones[0].score > .5) {
+           color = 'red'
+         }
+         if (t.tone_categories[0].tones[1].score > .5) {
+           color = 'yellow'
+         }
+         if (t.tone_categories[0].tones[2].score > .5) {
+           color = 'green'
+         }
+         if (t.tone_categories[0].tones[3].score > .5) {
+           color = 'pink'
+         }
+         if (t.tone_categories[0].tones[4].score > .5) {
+           color = 'blue'
+         }
+        preData.push({text: t.text, sentence_id: t.sentence_id, tones: t.tone_categories[0], color: color})
+      }
+      const data = JSON.stringify(preData)
 
       const insertPiece = {original_piece_id, user_book_id, data, piece_num, micro_piece_1, micro_piece_3, completed }
       // console.log('insert piece', insertPiece)
@@ -212,15 +265,16 @@ export default (app: Object) => {
        .insert(insertPiece, '*')
     })
     .then((rows) => {
-      const parsedData = JSON.parse(rows[0].data)
-      console.log('trying to get an object', typeof parsedData)
-      console.log('in then after insert', typeof rows[0].data)
-      res.send({data: parsedData})
+      // const parsedData = JSON.parse(rows[0].data)
+      // console.log('trying to get an object', typeof parsedData)
+      // console.log('in then after insert', typeof rows[0].data)
+      res.send({data: JSON.parse(rows[0].data)})
   })
     .catch((err) => {
       console.log(err)
     })
   })
+
 
 
  // app.post(analyzePieceRoute(), (req, res) => {
