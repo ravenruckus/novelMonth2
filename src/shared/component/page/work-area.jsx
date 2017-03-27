@@ -1,15 +1,14 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 
-// import HelloAsyncButton from '../../container/hello-async-button'
-// import MessageAsync from '../../container/message-async'
-
 import EnterStory from '../../container/enter-story'
 import AnalyzeButton1 from '../../container/analyze-button1'
 import Test from '../../container/test'
 import Analyzed1 from '../../container/analyzed1'
 
-import MicroPieceOneDB from '../../component/micro-piece-one-db'
+import MicroOne from '../../container/micro-one-container'
+
+// import MicroPieceOneDB from '../../component/micro-piece-one-db'
 
 
 const title = 'Work Area'
@@ -33,24 +32,25 @@ const WorkArea = ({ match, analyze1State, loading }) =>
 
     <h1>{title}</h1>
 
-    {/* <MicroOne originalPieceId={match.params.originalPieceId} userBookId={match.params.userBookId} pieceNumber={match.params.pieceNumber} /> */}
+    <MicroOne originalPieceId={match.params.originalPieceId} userBookId={match.params.userBookId} pieceNumber={match.params.pieceNumber} />
 
     {/* <p>originalPieceId{match.params.originalPieceId}</p>
     <p> userbookid {match.params.userBookId}</p>
     <p> pieceNumber {match.params.pieceNumber}</p> */}
 
-    <MicroPieceOneDB originalPieceId={match.params.originalPieceId} userBookId={match.params.userBookId} pieceNumber={match.params.pieceNumber}/>
+    {/* <MicroPieceOneDB originalPieceId={match.params.originalPieceId} userBookId={match.params.userBookId} pieceNumber={match.params.pieceNumber}/> */}
 
-    <div>
+
+    {/* <div>
       <EnterStory />
       <AnalyzeButton1 originalPieceId={match.params.originalPieceId} userBookId={match.params.userBookId} pieceNumber={match.params.pieceNumber} />
-    </div>
+    </div> */}
 
-     { loading ?
+     {/* { loading ?
       <h3>Analyzing your story now.</h3>
        :
       <h3></h3>
-    }
+    } */}
 
     {/* <Test /> */}
 

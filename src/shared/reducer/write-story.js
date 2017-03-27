@@ -54,9 +54,9 @@ const writeStoryReducer = (state: Immut = initialState, action: { type: string, 
     case CHANGE_SENTENCE_ID:
         return state.set('sentenceId', action.payload)
     case GET_PIECE_DB1_REQUEST:
-        return state.set('loading', 'loading')
+        return state.set('loadingdb', 'loading')
     case GET_PIECE_DB1_SUCCESS:
-      return state.set('analyzedDb1', action.payload)
+      return state.set('analyzedDb1', action.payload).set('loadingdb', '')
     // case GET_PIECE_DB1_SUCCESS:
     //     return state.set('analyzedDb1', state.get('analyzedDb1').push(action.payload))
     case GET_PIECE_DB1_FAILURE:

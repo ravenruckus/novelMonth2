@@ -8,16 +8,16 @@ class MicroOneDB extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-    pieceNumber: this.props.pieceNumber,
-    userBookId: this.props.userBookId
-    }
+    // this.state = {
+    // pieceNumber: this.props.pieceNumber,
+    // userBookId: this.props.userBookId
+    // }
     // this.handleClick = this.handlClick.bind(this)
   }
 
   componentDidMount() {
 
-    this.props.getPieceDbActions(this.state.userBookId, this.state.pieceNumber)
+    this.props.getPieceDbActions(this.props.userBookId, this.props.pieceNumber)
   }
 
   handleClick(event, sentence_id) {
