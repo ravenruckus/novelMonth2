@@ -9,7 +9,7 @@ export const FACEBOOK_CALLBACK ='/login/facebook/callback'
 export const APP_INTRO_PAGE_ROUTE = '/app-intro'
 export const CREATE_STORY_ROUTE ='/create-story'
 export const DASHBOARD_ROUTE = '/dashboard'
-export const WORK_AREA_ROUTE ='/work-area/:originalPieceId/:userBookId/:pieceNumber'
+export const WORK_AREA_ROUTE ='/work-area/:originalPieceId/:userBookId/:pieceNumber/:title'
 
 // export const WORK_AREA_ROUTE ='/work-area'
 

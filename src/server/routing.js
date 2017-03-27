@@ -178,7 +178,7 @@ export default (app: Object) => {
           knex('user_book')
            .insert(insertNewStory, '*')
            .then((rows) => {
-             res.json({newStory: JSON.stringify(rows[0].user_title)})
+             res.json({newStory: rows[0]})
            })
          .catch((err) => {
            console.log(err)
@@ -274,6 +274,11 @@ export default (app: Object) => {
       console.log(err)
     })
   })
+
+  // app.get(getPiectRoute(), (req, res) => {
+  //   knex('user_pieces')
+  //
+  // })
 
 
 

@@ -15,12 +15,13 @@ import UserTitle from '../../container/display-story-info'
 
 type Props = {
   newStory: string,
+  newStoryId: number,
 }
 
 const title = 'Create A Story'
 
 
-const CreateStory = ({ newStory }: Props) =>
+const CreateStory = ({ newStory, newStoryId }: Props) =>
   <div>
     <Helmet
       title={title}
@@ -40,7 +41,12 @@ const CreateStory = ({ newStory }: Props) =>
         //    <p>{newStory}</p>
         //    <NavLink to={DASHBOARD_ROUTE} activeStyle={{ color: 'limegreen' }} exact>Dashboard</NavLink>
         // </div>
-        <Redirect push to="/dashboard">Test two</Redirect>
+      //   <div>
+      //   <h1>New story started {newStory}</h1>
+      //   <h2>Story id {newStoryId} </h2>
+      // </div>
+        <Redirect push to={`/work-area/1/${newStoryId}/1/${newStory}`}>Test two</Redirect>
+
        :
         <div>
           <UserTitle />

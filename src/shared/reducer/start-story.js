@@ -13,7 +13,8 @@ import {
 const initialState = Immutable.fromJS({
   title: '',
   userId: '',
-  newStory: ''
+  newStory: '',
+  newStoryId: 1,
 })
 
 const createStoryReducer = (state: Immut = initialState, action: { type: string, payload: any }) => {
@@ -23,7 +24,7 @@ const createStoryReducer = (state: Immut = initialState, action: { type: string,
     case START_STORY_REQUEST:
       return state.set('newStory', '')
     case START_STORY_SUCCESS:
-      return state.set('newStory', action.payload)
+      return state.set('newStory', action.payload.user_title).set('newStoryId', action.payload.id)
     case START_STORY_FAILURE:
       return state.set('newStory', 'No message received, please check your connection')
     default:

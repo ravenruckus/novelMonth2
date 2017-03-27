@@ -31,6 +31,7 @@ export const startStoryActions = (storyTitle: string) => (dispatch: Function, ge
       return res.json()
     })
     .then((data) => {
+      console.log('in then of startstoryactions', data.newStory.id)
       if (!data.newStory) throw Error('No new story received')
       // console.log(' about to dispatach success', getstate())
       // console.log('data before success', data.newStory)

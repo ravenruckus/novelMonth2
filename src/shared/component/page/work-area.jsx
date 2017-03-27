@@ -28,6 +28,7 @@ const WorkArea = ({ match, analyze1State, loading }) =>
     />
 
     <h1>{title}</h1>
+    <h2>{match.params.title}</h2>
 
      { loading ?
       <h3>Analyzing your story now.</h3>

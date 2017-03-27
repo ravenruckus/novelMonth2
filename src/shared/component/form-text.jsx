@@ -7,7 +7,6 @@ type Props = {
   controlLabel: string,
   type: string,
   title: string,
-  componentClass: string,
   handleChange: Function
   //I'm not sure if this needs to be here since it works without it and isn't passed down through props but it is dispatched so I need to look that up to understand it better.
 }
@@ -19,7 +18,6 @@ const TextForm = ({ sectionTitle, controlLabel, type, title, componentClass, han
         name={sectionTitle}
         type={type}
         value={title}
-        componentClass={componentClass}
         placeholder="Enter text"
         onChange={handleChange}
       />
