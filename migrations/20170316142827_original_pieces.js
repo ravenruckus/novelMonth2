@@ -9,6 +9,7 @@ exports.up = function(knex) {
       .onDelete('CASCADE')
       .index();
     table.integer('piece_num').notNullable().default(0);
+    table.integer('micro_piece').notNullable().default(0);
     table.string('section_title').default('');
     table.text('data').notNullable().default('');
     table.timestamps(true, true);

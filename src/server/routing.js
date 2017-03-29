@@ -32,7 +32,8 @@ import {
   workAreaSingleRoute,
   analyzePieceRoute,
   getPieceRoute,
-  deletePieceRoute
+  deletePieceRoute,
+  getOriginalRoute
 } from '../shared/routes'
 
 
@@ -286,22 +287,37 @@ export default (app: Object) => {
 
 
    app.get(getPieceRoute(), (req, res) => {
-     // const userBookId = req.params.userBookId
     const piece_num = req.params.pieceNumber
-    // const micro_piece_1 = 't'
     const userBookId = req.params.userBookId
+    console.log('in get piece route for db', userBookId)
 
     knex('user_pieces')
-    // .where('user_book_id', 61)
     .where({user_book_id: userBookId, piece_num: piece_num, micro_piece_1: 't'})
-      // .where({id: id, piece_num: piece_num, micro_piece_1: 't'})
+    .orderBy('id', 'desc').limit(1)
     .then((rows) => {
-        // res.send(rows)
+      // console.log('in get piece from db routing', typeof rows[0].data)
+      // if(!rows.data) {
+      //   return 'Data not found'
+      // }
+      console.log('in user_pieces get', rows)
         res.send({data: JSON.parse(rows[0].data)})
       })
       .catch((err) => {
         console.log(err)
       })
+  })
+
+  app.get(getOriginalRoute(), (req, res) => {
+    const micro_piece = req.params.micro_piece
+    const piece_num = req.params.pieceNum
+    knex('original_pieces')
+    .where({bk_id: 1, piece_num: 1, micro_piece: micro_piece })
+    .then((rows) => {
+      res.send({data: JSON.parse(rows[0].data)})
+    })
+    .catch((err) => {
+      console.log(err)
+    })
   })
 
   app.delete(deletePieceRoute(), (req, res) => {

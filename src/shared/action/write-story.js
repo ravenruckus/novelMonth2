@@ -5,7 +5,7 @@ import 'isomorphic-fetch'
 import { createAction } from 'redux-actions'
 // import { ENTER_NEW_STORY } from '../../shared/routes'
 // import { writeStoryReducer } from '../../shared/routes'
-import { analyzePieceRoute, getPieceRoute } from '../../shared/routes'
+import { analyzePieceRoute, getPieceRoute,  getOriginalRoute } from '../../shared/routes'
 
 
 
@@ -24,6 +24,11 @@ export const ANALYZE_PIECE3 = 'ANALYZE_PIECE3'
 export const GET_PIECE_DB1_REQUEST = 'GET_PIECE_DB1_REQUEST'
 export const GET_PIECE_DB1_SUCCESS = 'GET_PIECE_DB1_SUCCESS'
 export const GET_PIECE_DB1_FAILURE = 'GET_PIECE_DB1_FAILURE'
+
+export const GET_ORIG_REQUEST = 'GET_ORIG_REQUEST'
+export const GET_ORIG_SUCCESS = 'GET_ORIG_SUCCESS'
+export const GET_ORIG_FAILURE = 'GET_ORIG_FAILURE'
+
 
 
 export const SHOW_TONE = 'SHOW_TONE'
@@ -44,6 +49,11 @@ export const addPiece3 = createAction(ADD_PIECE3)
 export const analyzePiece1 = createAction(ANALYZE_PIECE1)
 export const analyzePiece2 = createAction(ANALYZE_PIECE2)
 export const analyzePiece3 = createAction(ANALYZE_PIECE3)
+
+export const getOrigRequest= createAction(GET_ORIG_REQUEST)
+export const getOrigSuccess= createAction(GET_ORIG_SUCCESS)
+export const getOrigFailure= createAction(GET_ORIG_FAILURE)
+
 
 export const showTone = createAction(SHOW_TONE)
 export const hideTone = createAction(HIDE_TONE)
@@ -85,8 +95,8 @@ export const analyzeStoryActions1 = (originalPieceId: number, userBookId: number
   }
 
   export const getPieceDbActions = (userBookId: number, pieceNumber: num) => (dispatch: Function, getstate: Function) => {
-    console.log('userBookId', userBookId)
-    console.log('pieceNumber', pieceNumber)
+    console.log('userBookId in db request actions', userBookId)
+    console.log('pieceNumber in db request actions', pieceNumber)
     dispatch(getPieceDb1Request())
     return fetch(getPieceRoute(userBookId, pieceNumber), { method: 'GET', credentials: 'same-origin' })
      .then((res) => {
@@ -95,7 +105,7 @@ export const analyzeStoryActions1 = (originalPieceId: number, userBookId: number
        return res.json()
      })
      .then((data) => {
-       console.log('data before success dispatch', data.data)
+       console.log('data before success dispatch in db request', data.data)
        console.log('state before succes dispatch', getstate())
       //  if (!data) throw Error('No story piece received')
        const sentences = data.data
@@ -109,4 +119,28 @@ export const analyzeStoryActions1 = (originalPieceId: number, userBookId: number
        console.log('after failure', getstate())
      })
 
+  }
+
+  export const getOrigActions = (micro_piece: number, piece_num: num ) => (dispatch: Function, getstate: Function) => {
+    dispatch(getOrigRequest())
+    return fetch(getOriginalRoute(micro_piece, piece_num), { method: 'GET', credentials: 'same-origin' } )
+    .then((res) => {
+      console.log('in fetch then', res)
+      if (!res.ok) throw Error(res.statusText)
+      return res.json()
+    })
+    .then((data) => {
+      console.log('data before success dispatch', data.data)
+      console.log('state before succes dispatch', getstate())
+     //  if (!data) throw Error('No story piece received')
+      const sentences = data.data.data
+
+      console.log('sentences in orig', sentences)
+
+      dispatch(getOrigSuccess(sentences))
+    })
+    .catch(() => {
+      dispatch(getOrigFailure())
+      console.log('after failure', getstate())
+    })
   }

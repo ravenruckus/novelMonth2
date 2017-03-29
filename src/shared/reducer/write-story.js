@@ -16,6 +16,9 @@ import {
   GET_PIECE_DB1_REQUEST,
   GET_PIECE_DB1_SUCCESS,
   GET_PIECE_DB1_FAILURE,
+  GET_ORIG_REQUEST,
+  GET_ORIG_SUCCESS,
+  GET_ORIG_FAILURE,
 } from '../action/write-story'
 
 const initialState = Immutable.fromJS({
@@ -23,12 +26,15 @@ const initialState = Immutable.fromJS({
   piece2: '',
   piece3: '',
   analyze1: [],
-  analyze2: '',
-  analyze3: '',
+  analyze2: [],
+  analyze3: [],
   analyzedDb1: [],
   analyzedDb2: [],
   analyzedDb3: [],
+  origMicro1: [],
   loading: '',
+  loadingOrig: '',
+  loadingdb: '',
   toneView: 'none',
   sentenceId: 0,
 })
@@ -46,7 +52,7 @@ const writeStoryReducer = (state: Immut = initialState, action: { type: string, 
     case ANALYZE_PIECE1_SUCCESS:
         return state.set('analyze1', action.payload).set('loading', '')
     case  ANALYZE_PIECE1_FAILURE:
-        return state.set('analyze1', ['no data'])
+        return state.set('analyze1', [])
     case HIDE_TONE:
         return state.set('toneView', 'none')
     case SHOW_TONE:
@@ -56,11 +62,15 @@ const writeStoryReducer = (state: Immut = initialState, action: { type: string, 
     case GET_PIECE_DB1_REQUEST:
         return state.set('loadingdb', 'loading')
     case GET_PIECE_DB1_SUCCESS:
-      return state.set('analyzedDb1', action.payload).set('loadingdb', '')
-    // case GET_PIECE_DB1_SUCCESS:
-    //     return state.set('analyzedDb1', state.get('analyzedDb1').push(action.payload))
+      return state.set('analyzedDb1', action.payload)
     case GET_PIECE_DB1_FAILURE:
         return state.set('analyzedDb1', [])
+    case GET_ORIG_REQUEST:
+      return state.set('loadingOrig', '')
+    case GET_ORIG_SUCCESS:
+      return state.set('origMicro1', action.payload)
+    case GET_ORIG_FAILURE:
+      return state.set('origMicro1', [])
     default:
       return state
   }

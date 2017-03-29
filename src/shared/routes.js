@@ -27,3 +27,5 @@ export const helloEndpointRoute = (num: ?number) => `/api/hello/${num || ':num'}
 export const enterNewStoryRoute = (storyTitle: string) =>`/api/enter-new-story/${storyTitle || ':storyTitle'}`
 
 export const analyzePieceRoute = (originalPieceId: number, userBookId: number, pieceNumber: number, text: string, micro_piece_2: string, micro_piece_1: string, micro_piece_3: string, completed: string) => `/api/work-area/${originalPieceId || ':originalPieceId'}/${userBookId || ':userBookId'}/${pieceNumber || ':pieceNumber'}/${text || ':text'}/${micro_piece_2 || ':micro_piece_2'}/${micro_piece_1 || ':micro_piece_1'}/${micro_piece_3 || ':micro_piece_3'}/${completed || ':completed'}`
+
+export const getOriginalRoute = (micro_piece: number, piece_num: num ) => `/api/get-orginal/${micro_piece || ':micro_piece'}/${piece_num || ':piece_num'}`

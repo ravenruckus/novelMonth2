@@ -6,16 +6,28 @@ import MicroPieceOneDB from './micro-piece-one-db'
 import EnterStory from '../container/enter-story'
 import AnalyzeButton1 from '../container/analyze-button1'
 import Analyzed1 from '../container/analyzed1'
+import MicroOneOrig from './micro-one-orig-dirty'
 
 type Props = {
-  analyzedDb: [],
-  analyzed: [],
-  loading: '',
+  analyzedDb: array,
+  analyzed: array,
+  loading: string,
+
 }
 
-const MicroOne = ({originalPieceId, userBookId, pieceNumber, analyzedDb, analyzed, loading }: Props) =>
+const MicroOne = ({originalPieceId, userBookId, pieceNumber, loading, analyzedDb, analyzed }: Props) =>
 
 <div>
+
+    <MicroOneOrig originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
+
+    {/* <MicroPieceOneDB originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
+
+    <div>
+      <EnterStory />
+      <AnalyzeButton1 originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
+    </div> */}
+
 
     { loading ?
      <h3>Analyzing your story now.</h3>
