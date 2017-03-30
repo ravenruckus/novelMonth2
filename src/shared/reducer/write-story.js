@@ -22,6 +22,12 @@ import {
   GET_PIECE_DB1_REQUEST,
   GET_PIECE_DB1_SUCCESS,
   GET_PIECE_DB1_FAILURE,
+  GET_PIECE_DB2_REQUEST,
+  GET_PIECE_DB2_SUCCESS,
+  GET_PIECE_DB2_FAILURE,
+  GET_PIECE_DB3_REQUEST,
+  GET_PIECE_DB3_SUCCESS,
+  GET_PIECE_DB3_FAILURE,
   GET_ORIG_REQUEST,
   GET_ORIG_SUCCESS,
   GET_ORIG_FAILURE,
@@ -91,6 +97,18 @@ const writeStoryReducer = (state: Immut = initialState, action: { type: string, 
       return state.set('analyzedDb1', action.payload)
     case GET_PIECE_DB1_FAILURE:
         return state.set('analyzedDb1', [])
+    case GET_PIECE_DB2_REQUEST:
+        return state.set('loadingdb', 'loading')
+    case GET_PIECE_DB2_SUCCESS:
+      return state.set('analyzedDb2', action.payload)
+    case GET_PIECE_DB2_FAILURE:
+        return state.set('analyzedDb2', [])
+    case GET_PIECE_DB3_REQUEST:
+        return state.set('loadingdb', 'loading')
+    case GET_PIECE_DB3_SUCCESS:
+      return state.set('analyzedDb3', action.payload)
+    case GET_PIECE_DB3_FAILURE:
+        return state.set('analyzedDb3', [])
     case GET_ORIG_REQUEST:
       return state.set('loadingOrig', '')
     case GET_ORIG_SUCCESS:

@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import { getPieceDbActions, changeSentenceId } from '../action/write-story'
 
 
-class MicroOneDB extends Component {
+class MicroOneDB3 extends Component {
   constructor(props) {
     super(props)
 
@@ -12,7 +12,7 @@ class MicroOneDB extends Component {
 
   componentDidMount() {
 
-    this.props.getPieceDbActions(this.props.userBookId, this.props.pieceNumber)
+    this.props.getPieceDbActions(this.props.userBookId, this.props.pieceNumber, 3)
 
   }
 
@@ -25,20 +25,20 @@ class MicroOneDB extends Component {
 
 
   render() {
-    console.log('in micro piece one db commponent', this.props.analyzedDb1)
+    console.log('in micro piece three db commponent', this.props.analyzedDb3)
 
     return (
 
       <div>
-          <h2>In db response.</h2>
+          <h2>In db response three.</h2>
       <div>
 
         {
-          this.props.analyzedDb1.map((el) =>(
-        <div key={`${el.sentence_id}db1`}>
-          <div style={{background: `${el.color}`}} onClick={(event) => this.handleClick(event, `${el.sentence_id}db1`)} >{el.text}</div>
+          this.props.analyzedDb3.map((el) =>(
+        <div key={`${el.sentence_id}db3`}>
+          <div style={{background: `${el.color}`}} onClick={(event) => this.handleClick(event, `${el.sentence_id}db3`)} >{el.text}</div>
 
-        { this.props.sentenceId == `${el.sentence_id}db1` ?
+        { this.props.sentenceId == `${el.sentence_id}db3` ?
 
           <div> {el.tones.tones.map((el2) => (
             <div key={el2.tone_id}>
@@ -69,11 +69,11 @@ class MicroOneDB extends Component {
 
 const mapStateToProps = (state) =>  {
   return {
-   analyzedDb1: state.writeStory.get('analyzedDb1'),
+   analyzedDb3: state.writeStory.get('analyzedDb3'),
    toneView: state.writeStory.get('toneView'),
    sentenceId: state.writeStory.get('sentenceId'),
   };
 };
 
 export default connect(mapStateToProps, {changeSentenceId, getPieceDbActions
-})(MicroOneDB);
+})(MicroOneDB3);

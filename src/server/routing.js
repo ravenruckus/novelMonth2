@@ -141,14 +141,6 @@ export default (app: Object) => {
    res.redirect(HOME_PAGE_ROUTE);
   }
 
-  // app.get('/users', (req, res) => {
-  //   knex('users')
-  //     .where('id', 1)
-  //     .then((rows) => {
-  //       res.send(rows)
-  //     })
-  // })
-
   app.get('/logout', function(req, res) {
   req.logout();
 
@@ -169,7 +161,6 @@ export default (app: Object) => {
    const fbUserId = req.session.passport.user.facebook_id
    const user_title = req.params.storyTitle
 
-  //  res.json(startNewStoryController(fbUserId, user_title))
 
     knex('users')
       .where('facebook_id', fbUserId)
@@ -188,40 +179,7 @@ export default (app: Object) => {
        })
      })
 
- // app.post(analyzePieceRoute(), (req, res) => {
- //  //  console.log(req.params)
- //   const original_piece_id = req.params.originalPieceId
- //   const user_book_id = req.params.userBookId
- //   const piece_num = req.params.pieceNumber
- //   const text = req.params.text
- //   const micro_piece_1 = req.params.micro_piece_1
- //   const micro_piece_2 = req.params.micro_piece_2
- //   const micro_piece_3 = req.params.micro_piece_3
- //   const completed = req.params.completed
- //
- //   Analyze(text)
- //    .then((obj) => {
- //
- //      const data = obj
- //
- //      const insertPiece = {original_piece_id, user_book_id, data, piece_num, micro_piece_1, micro_piece_3, completed }
- //      // console.log('insert piece', insertPiece)
- //      return knex('user_pieces')
- //       .insert(insertPiece, '*')
- //    })
- //    .then((rows) => {
- //      const parsedData = JSON.parse(rows[0].data)
- //      console.log('trying to get an object', typeof parsedData)
- //      console.log('in then after insert', typeof rows[0].data)
- //      res.send({data: parsedData})
- //  })
- //    .catch((err) => {
- //      console.log(err)
- //    })
- //  })
-
  app.post(analyzePieceRoute(), (req, res) => {
-  //  console.log(req.params)
    const original_piece_id = req.params.originalPieceId
    const user_book_id = req.params.userBookId
    const piece_num = req.params.pieceNumber
@@ -289,9 +247,12 @@ export default (app: Object) => {
    app.get(getPieceRoute(), (req, res) => {
     const piece_num = req.params.pieceNumber
     const userBookId = req.params.userBookId
+    const micro_piece_1 = req.params.micro_piece_1
+    const micro_piece_2 = req.params.micro_piece_2
+    const micro_piece_3 = req.params.micro_piece_3
 
     knex('user_pieces')
-    .where({user_book_id: userBookId, piece_num: piece_num, micro_piece_1: 't'})
+    .where({user_book_id: userBookId, piece_num: piece_num, micro_piece_1: micro_piece_1, micro_piece_2: micro_piece_2, micro_piece_3: micro_piece_3 })
     .orderBy('id', 'desc').limit(1)
     .then((rows) => {
       if(!rows.length) {

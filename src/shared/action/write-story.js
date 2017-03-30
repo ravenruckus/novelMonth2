@@ -33,6 +33,14 @@ export const GET_PIECE_DB1_REQUEST = 'GET_PIECE_DB1_REQUEST'
 export const GET_PIECE_DB1_SUCCESS = 'GET_PIECE_DB1_SUCCESS'
 export const GET_PIECE_DB1_FAILURE = 'GET_PIECE_DB1_FAILURE'
 
+export const GET_PIECE_DB2_REQUEST = 'GET_PIECE_DB2_REQUEST'
+export const GET_PIECE_DB2_SUCCESS = 'GET_PIECE_DB2_SUCCESS'
+export const GET_PIECE_DB2_FAILURE = 'GET_PIECE_DB2_FAILURE'
+
+export const GET_PIECE_DB3_REQUEST = 'GET_PIECE_DB3_REQUEST'
+export const GET_PIECE_DB3_SUCCESS = 'GET_PIECE_DB3_SUCCESS'
+export const GET_PIECE_DB3_FAILURE = 'GET_PIECE_DB3_FAILURE'
+
 export const GET_ORIG_REQUEST = 'GET_ORIG_REQUEST'
 export const GET_ORIG_SUCCESS = 'GET_ORIG_SUCCESS'
 export const GET_ORIG_FAILURE = 'GET_ORIG_FAILURE'
@@ -67,6 +75,14 @@ export const getPieceDb1Request =createAction(GET_PIECE_DB1_REQUEST)
 export const getPieceDb1Success =createAction(GET_PIECE_DB1_SUCCESS)
 export const getPieceDb1Failure =createAction(GET_PIECE_DB1_FAILURE)
 
+export const getPieceDb2Request =createAction(GET_PIECE_DB2_REQUEST)
+export const getPieceDb2Success =createAction(GET_PIECE_DB2_SUCCESS)
+export const getPieceDb2Failure =createAction(GET_PIECE_DB2_FAILURE)
+
+export const getPieceDb3Request =createAction(GET_PIECE_DB3_REQUEST)
+export const getPieceDb3Success =createAction(GET_PIECE_DB3_SUCCESS)
+export const getPieceDb3Failure =createAction(GET_PIECE_DB3_FAILURE)
+
 export const addPiece1 = createAction(ADD_PIECE1)
 export const addPiece2 = createAction(ADD_PIECE2)
 export const addPiece3 = createAction(ADD_PIECE3)
@@ -92,41 +108,6 @@ export const hideTone = createAction(HIDE_TONE)
 export const changeSentenceId = createAction(CHANGE_SENTENCE_ID)
 
 
-
-// export const analyzeStoryActions1 = (originalPieceId: number, userBookId: number, pieceNumber: num, microPiece: num) => (dispatch: Function, getstate: Function) => {
-//
-//   const text = getstate().writeStory.get('piece1')
-//   console.log('in action text', text)
-//   const micro_piece_1 = 't';
-//   const micro_piece_2 = 'f';
-//   const micro_piece_3 = 'f';
-//   const completed = 'f';
-//
-//     dispatch(analyzePiece1Request())
-//      return fetch(analyzePieceRoute(originalPieceId, userBookId, pieceNumber, text, micro_piece_2, micro_piece_1, micro_piece_3, completed), { method: 'POST', credentials: 'same-origin' })
-//       .then((res) => {
-//         console.log('in fetch then', res)
-//         if (!res.ok) throw Error(res.statusText)
-//         return res.json()
-//       })
-//       .then((data) => {
-//         console.log('data before success dispatch', data)
-//         console.log('state before succes dispatch', getstate())
-//         if (!data) throw Error('No story piece received')
-//         const sentences = data.data
-//
-//         console.log('sentences', sentences)
-//
-//         dispatch(analyzePiece1Success(sentences))
-//         console.log('after anaylze success', getstate())
-//       })
-//       .catch(() => {
-//         dispatch(analyzePiece1Failure())
-//         console.log('after failure', getstate())
-//       })
-//   }
-
-
 export const analyzeStoryActions1 = (originalPieceId: number, userBookId: number, pieceNumber: num, microPiece: num) => (dispatch: Function, getstate: Function) => {
 
   let micro_piece_1 = 'f';
@@ -134,81 +115,92 @@ export const analyzeStoryActions1 = (originalPieceId: number, userBookId: number
   let micro_piece_3 = 'f';
   let completed = 'f';
   let text = []
+
   if (microPiece === 1) {
     micro_piece_1 = 't'
     text = getstate().writeStory.get('piece1')
-    console.log('in action text1', text)
     dispatch(analyzePiece1Request())
   } else if (microPiece === 2) {
     micro_piece_2 = 't'
     text = getstate().writeStory.get('piece2')
-    console.log('in action text2', text)
     dispatch(analyzePiece2Request())
   } else if (microPiece === 3) {
     micro_piece_3 = 't'
     text = getstate().writeStory.get('piece3')
-    console.log('in action text3', text)
     dispatch(analyzePiece3Request())
   }
-     return fetch(analyzePieceRoute(originalPieceId, userBookId, pieceNumber, text, micro_piece_2, micro_piece_1, micro_piece_3, completed), { method: 'POST', credentials: 'same-origin' })
-      .then((res) => {
-        console.log('in fetch then', res)
-        if (!res.ok) throw Error(res.statusText)
-        return res.json()
-      })
-      .then((data) => {
-        console.log('data before success dispatch', data)
-        console.log('state before succes dispatch', getstate())
-        if (!data) throw Error('No story piece received')
-        const sentences = data.data
+   return fetch(analyzePieceRoute(originalPieceId, userBookId, pieceNumber, text, micro_piece_2, micro_piece_1, micro_piece_3, completed), { method: 'POST', credentials: 'same-origin' })
+    .then((res) => {
+      if (!res.ok) throw Error(res.statusText)
+      return res.json()
+    })
 
-        console.log('sentences', sentences)
-        if (microPiece === 1) {
-          dispatch(analyzePiece1Success(sentences))
-        } else if (microPiece === 2) {
-          dispatch(analyzePiece2Success(sentences))
-        } else if (microPiece === 3) {
-          dispatch(analyzePiece3Success(sentences))
-        }
-        console.log('after anaylze success', getstate())
-      })
-      .catch(() => {
-        if (microPiece === 1) {
-          dispatch(analyzePiece1Failure())
-        } else if (microPiece === 2) {
-          dispatch(analyzePiece2Failure())
-        } else if (microPiece === 3) {
-          dispatch(analyzePiece3Failure())
-        }
-        console.log('after failure', getstate())
-      })
+    .then((data) => {
+      if (!data) throw Error('No story piece received')
+      const sentences = data.data
+      if (microPiece === 1) {
+        dispatch(analyzePiece1Success(sentences))
+      } else if (microPiece === 2) {
+        dispatch(analyzePiece2Success(sentences))
+      } else if (microPiece === 3) {
+        dispatch(analyzePiece3Success(sentences))
+      }
+    })
+
+    .catch(() => {
+      if (microPiece === 1) {
+        dispatch(analyzePiece1Failure())
+      } else if (microPiece === 2) {
+        dispatch(analyzePiece2Failure())
+      } else if (microPiece === 3) {
+        dispatch(analyzePiece3Failure())
+      }
+    })
   }
 
-  export const getPieceDbActions = (userBookId: number, pieceNumber: num) => (dispatch: Function, getstate: Function) => {
-    console.log('userBookId in db request actions', userBookId)
-    console.log('pieceNumber in db request actions', pieceNumber)
-    dispatch(getPieceDb1Request())
-    return fetch(getPieceRoute(userBookId, pieceNumber), { method: 'GET', credentials: 'same-origin' })
+  export const getPieceDbActions = (userBookId: number, pieceNumber: num, microPiece: num) => (dispatch: Function, getstate: Function) => {
+    let micro_piece_1 = 'f';
+    let micro_piece_2 = 'f';
+    let micro_piece_3 = 'f';
+    let completed = 'f';
+    let text = []
+    if (microPiece === 1) {
+      micro_piece_1 = 't'
+      dispatch(getPieceDb1Request())
+    } else if (microPiece === 2) {
+      micro_piece_2 = 't'
+      dispatch(getPieceDb2Request())
+    } else if (microPiece === 3) {
+      micro_piece_3 = 't'
+      dispatch(getPieceDb3Request())
+    }
+    return fetch(getPieceRoute(userBookId, pieceNumber, micro_piece_1, micro_piece_2, micro_piece_3), { method: 'GET', credentials: 'same-origin' })
      .then((res) => {
-       console.log('in fetch then', res)
        if (!res.ok) throw Error(res.statusText)
        return res.json()
      })
      .then((data) => {
-       console.log('data before success dispatch in db request', data.data)
-       console.log('state before succes dispatch', getstate())
+
       //  if (!data) throw Error('No story piece received')
        const sentences = data.data
-
-       console.log('sentences', sentences)
-
-       dispatch(getPieceDb1Success(sentences))
+       if (microPiece === 1) {
+         dispatch(getPieceDb1Success(sentences))
+       } else if (microPiece === 2) {
+         dispatch(getPieceDb2Success(sentences))
+       } else if (microPiece === 3) {
+         console.log('in getdb before success three sentences', sentences)
+         dispatch(getPieceDb3Success(sentences))
+       }
      })
      .catch(() => {
-       dispatch(getPieceDb1Failure())
-       console.log('after failure', getstate())
+       if (microPiece === 1) {
+         dispatch(getPieceDb1Failure())
+       } else if (microPiece === 2) {
+         dispatch(getPieceDb2Failure())
+       } else if (microPiece === 3) {
+         dispatch(getPieceDb2Failure())
+       }
      })
-
   }
 
   export const getOrigActions = (micro_piece: number, piece_num: num ) => (dispatch: Function, getstate: Function) => {
@@ -223,17 +215,12 @@ export const analyzeStoryActions1 = (originalPieceId: number, userBookId: number
 
     return fetch(getOriginalRoute(micro_piece, piece_num), { method: 'GET', credentials: 'same-origin' } )
     .then((res) => {
-      console.log('in fetch then', res)
       if (!res.ok) throw Error(res.statusText)
       return res.json()
     })
     .then((data) => {
-      console.log('data before success dispatch', data.data)
-      console.log('state before succes dispatch', getstate())
      //  if (!data) throw Error('No story piece received')
       const sentences = data.data.data
-
-      console.log('sentences in orig', sentences)
 
       if(micro_piece === 1) {
         dispatch(getOrigSuccess(sentences))
@@ -253,7 +240,5 @@ export const analyzeStoryActions1 = (originalPieceId: number, userBookId: number
       }else {
         dispatch(getOrigFailure3())
       }
-
-      console.log('after failure', getstate())
     })
   }

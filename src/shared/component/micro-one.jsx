@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import MicroPieceOneDB from './micro-piece-one-db'
+import MicroPieceOneDB from './micro-piece-one-db-dirty'
 import EnterStory from '../container/enter-story'
 import AnalyzeButton1 from '../container/analyze-button1'
 import Analyzed1 from '../container/analyzed1'

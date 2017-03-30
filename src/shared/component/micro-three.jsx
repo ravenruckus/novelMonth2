@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-// import MicroPieceOneDB from './micro-piece-one-db'
+import MicroPieceOneDB3 from './micro-piece-three-db-dirty'
 import EnterStory3 from '../container/enter-story3'
 import AnalyzeButton3 from '../container/analyze-button3'
 import Analyzed3 from '../container/analyzed3'
@@ -20,6 +20,9 @@ const MicroThree = ({originalPieceId, userBookId, pieceNumber, loading, analyzed
 <div>
 
     <MicroThreeOrig originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
+
+
+    <MicroPieceOneDB3 originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
 
     <Analyzed3 />
 
