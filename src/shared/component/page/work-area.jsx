@@ -7,6 +7,8 @@ import Test from '../../container/test'
 import Analyzed1 from '../../container/analyzed1'
 
 import MicroOne from '../../container/micro-one-container'
+import MicroTwo from '../../container/micro-two-container'
+import MicroThree from '../../container/micro-three-container'
 
 // import MicroPieceOneDB from '../../component/micro-piece-one-db'
 
@@ -14,8 +16,8 @@ import MicroOne from '../../container/micro-one-container'
 const title = 'Work Area'
 
 type Props = {
-  analyze1State: [],
-  loading: ''
+  analyze1State: array,
+  loading: string,
 }
 
 
@@ -32,8 +34,21 @@ const WorkArea = ({ match, analyze1State, loading }) =>
 
     <h1>{title}</h1>
 
-    <MicroOne originalPieceId={match.params.originalPieceId} userBookId={match.params.userBookId} pieceNumber={match.params.pieceNumber} />
+     <h1>Micro Piece One</h1>
+     <MicroOne originalPieceId={match.params.originalPieceId} userBookId={match.params.userBookId} pieceNumber={match.params.pieceNumber} />
 
+   <h1>Micro Piece Two</h1>
+
+    <MicroTwo originalPieceId={match.params.originalPieceId} userBookId={match.params.userBookId} pieceNumber={match.params.pieceNumber} />
+
+
+    <MicroThree originalPieceId={match.params.originalPieceId} userBookId={match.params.userBookId} pieceNumber={match.params.pieceNumber} /> 
+
+
+{/*
+    <h1>Micro Piece Three</h1>
+
+    <MicroThree originalPieceId={match.params.originalPieceId} userBookId={match.params.userBookId} pieceNumber={match.params.pieceNumber} /> */}
     {/* <p>originalPieceId{match.params.originalPieceId}</p>
     <p> userbookid {match.params.userBookId}</p>
     <p> pieceNumber {match.params.pieceNumber}</p> */}

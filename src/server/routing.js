@@ -261,7 +261,7 @@ export default (app: Object) => {
       }
       const data = JSON.stringify(preData)
 
-      const insertPiece = {original_piece_id, user_book_id, data, piece_num, micro_piece_1, micro_piece_3, completed }
+      const insertPiece = {original_piece_id, user_book_id, data, piece_num, micro_piece_1, micro_piece_2, micro_piece_3, completed }
       // console.log('insert piece', insertPiece)
       return knex('user_pieces')
        .insert(insertPiece, '*')
@@ -289,17 +289,14 @@ export default (app: Object) => {
    app.get(getPieceRoute(), (req, res) => {
     const piece_num = req.params.pieceNumber
     const userBookId = req.params.userBookId
-    console.log('in get piece route for db', userBookId)
 
     knex('user_pieces')
     .where({user_book_id: userBookId, piece_num: piece_num, micro_piece_1: 't'})
     .orderBy('id', 'desc').limit(1)
     .then((rows) => {
-      // console.log('in get piece from db routing', typeof rows[0].data)
-      // if(!rows.data) {
-      //   return 'Data not found'
-      // }
-      console.log('in user_pieces get', rows)
+      if(!rows.length) {
+        return 'Data not found'
+      }
         res.send({data: JSON.parse(rows[0].data)})
       })
       .catch((err) => {

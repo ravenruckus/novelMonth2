@@ -21,13 +21,6 @@ const MicroOne = ({originalPieceId, userBookId, pieceNumber, loading, analyzedDb
 
     <MicroOneOrig originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
 
-    {/* <MicroPieceOneDB originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
-
-    <div>
-      <EnterStory />
-      <AnalyzeButton1 originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
-    </div> */}
-
 
     { loading ?
      <h3>Analyzing your story now.</h3>
@@ -46,7 +39,7 @@ const MicroOne = ({originalPieceId, userBookId, pieceNumber, loading, analyzedDb
 
     <div>
       <EnterStory />
-      <AnalyzeButton1 originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
+      <AnalyzeButton1 microPiece={1} originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
     </div>
 
 

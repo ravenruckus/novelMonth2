@@ -8,11 +8,6 @@ class MicroOneDB extends Component {
   constructor(props) {
     super(props)
 
-    // this.state = {
-    // pieceNumber: this.props.pieceNumber,
-    // userBookId: this.props.userBookId
-    // }
-    // this.handleClick = this.handlClick.bind(this)
   }
 
   componentDidMount() {
@@ -40,10 +35,10 @@ class MicroOneDB extends Component {
 
         {
           this.props.analyzedDb1.map((el) =>(
-        <div key={el.sentence_id}>
-          <div onClick={(event) => this.handleClick(event, el.sentence_id)} >{el.text}</div>
+        <div key={`${el.sentence_id}db1`}>
+          <div style={{background: `${el.color}`}} onClick={(event) => this.handleClick(event, `${el.sentence_id}db1`)} >{el.text}</div>
 
-        { this.props.sentenceId == el.sentence_id ?
+        { this.props.sentenceId == `${el.sentence_id}db1` ?
 
           <div> {el.tones.tones.map((el2) => (
             <div key={el2.tone_id}>

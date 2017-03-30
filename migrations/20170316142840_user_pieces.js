@@ -18,7 +18,6 @@ exports.up = function(knex) {
   table.boolean('micro_piece_1').notNullable().default(false);
   table.boolean('micro_piece_2').notNullable().default(false);
   table.boolean('micro_piece_3').notNullable().default(false);
-  table.integer('version').notNullable().default(1);
   table.boolean('completed').default(false);
   })
 };

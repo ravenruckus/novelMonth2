@@ -4,22 +4,22 @@ import { connect } from 'react-redux'
 
 // import { sayHello } from '../action/hello'
 import FormText from '../component/form-text'
-import { addPiece1 } from '../action/write-story'
+import { addPiece2 } from '../action/write-story'
 
 const mapStateToProps = (state) => {
   return {
-  classy: 'enterStory', 
+  classy: 'enterStory',
   sectionTitle: 'writeStory',
   controlLabel: 'Write Story',
   type: 'text',
   componentClass: 'textarea',
-  title: state.writeStory.get('piece1')
+  title: state.writeStory.get('piece2')
  }
 }
 
 const mapDispatchToProps = dispatch => ({
   handleChange: (e) => {
-    dispatch(addPiece1(e.target.value))
+    dispatch(addPiece2(e.target.value))
    },
 })
 

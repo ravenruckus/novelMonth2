@@ -7,7 +7,8 @@ import Button from '../component/analyze-component-button'
 
 const mapStateToProps = (state) => ({
   handleClick: Function,
-  label: 'Submit Micro Piece One',
+  label: 'Submit Micro Piece Three',
+  // enterText: state.writeStory.get('piece1')
 })
 
 const mapDispatchToProps = dispatch => ({

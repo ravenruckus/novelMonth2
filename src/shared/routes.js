@@ -15,7 +15,7 @@ export const WORK_AREA_ROUTE ='/work-area/:originalPieceId/:userBookId/:pieceNum
 // export const getPieceRoute = (userBookId: ?number) => `/api/get-micro-piece/${userBookId || ':userBookId'}`
 
 
-export const getPieceRoute = (userBookId: ?number,pieceNumber: ?number) => `/api/get-micro-piece/${userBookId || ':userBookId'}/${pieceNumber || ':pieceNumber'}`
+export const getPieceRoute = (userBookId: ?number, pieceNumber: ?number) => `/api/get-micro-piece/${userBookId || ':userBookId'}/${pieceNumber || ':pieceNumber'}`
 
 export const deletePieceRoute = (userPieceId: ?number) => `/api/delete-micro-piece/${userPieceId || ':userPieceId'}`
 

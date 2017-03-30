@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import { changeSentenceId, getOrigActions } from '../action/write-story'
 
 
-class MicroOneOrig extends Component {
+class MicroThreeOrig extends Component {
   constructor(props) {
     super(props)
 
@@ -12,7 +12,7 @@ class MicroOneOrig extends Component {
 
   componentDidMount() {
 
-    this.props.getOrigActions(1, this.props.pieceNumber)
+    this.props.getOrigActions(3, this.props.pieceNumber)
 
   }
 
@@ -25,20 +25,20 @@ class MicroOneOrig extends Component {
 
 
   render() {
-    console.log('in micro piece one orig commponent', this.props.origMicro1)
+    console.log('in micro piece three orig commponent', this.props.origMicro3)
 
     return (
 
       <div>
-        <h2>Original Piece </h2>
+        <h2>Original Piece Micro 3</h2>
       <div>
 
         {
-          this.props.origMicro1.map((el) =>(
-        <div key={`${el.sentence_id}orig1`}>
-          <div style={{background: `${el.color}`}} onClick={(event) => this.handleClick(event, `${el.sentence_id}orig1`)} >{el.text}</div>
+          this.props.origMicro3.map((el) =>(
+        <div key={`${el.sentence_id}orig3`}>
+          <div style={{background: `${el.color}`}} onClick={(event) => this.handleClick(event, `${el.sentence_id}orig3`)} >{el.text}</div>
 
-        { this.props.sentenceId == `${el.sentence_id}orig1` ?
+        { this.props.sentenceId == `${el.sentence_id}orig3` ?
 
           <div> {el.tones.tones.map((el2) => (
             <div key={el2.tone_id}>
@@ -72,9 +72,9 @@ const mapStateToProps = (state) =>  {
   return {
    toneView: state.writeStory.get('toneView'),
    sentenceId: state.writeStory.get('sentenceId'),
-   origMicro1: state.writeStory.get('origMicro1'),
+   origMicro3: state.writeStory.get('origMicro3'),
   };
 };
 
 export default connect(mapStateToProps, { changeSentenceId, getOrigActions
-})(MicroOneOrig);
+})(MicroThreeOrig);
