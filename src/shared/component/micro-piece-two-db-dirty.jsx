@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import React, { Component } from 'react'
 
-import { getPieceDbActions, changeSentenceId } from '../action/write-story'
+import { getPieceDbActions, changeSentenceIdActions } from '../action/write-story'
 
 
 class MicroOneDB2 extends Component {
@@ -19,7 +19,7 @@ class MicroOneDB2 extends Component {
   handleClick(event, sentence_id) {
     event.preventDefault()
 
-    this.props.changeSentenceId(sentence_id)
+    this.props.changeSentenceIdActions(sentence_id)
 
   }
 
@@ -75,5 +75,5 @@ const mapStateToProps = (state) =>  {
   };
 };
 
-export default connect(mapStateToProps, {changeSentenceId, getPieceDbActions
+export default connect(mapStateToProps, {changeSentenceIdActions, getPieceDbActions
 })(MicroOneDB2);

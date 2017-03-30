@@ -108,6 +108,17 @@ export const hideTone = createAction(HIDE_TONE)
 export const changeSentenceId = createAction(CHANGE_SENTENCE_ID)
 
 
+export const changeSentenceIdActions = (sentence_id: string) => (dispatch: Function, getstate: Function) => {
+
+  const currentSentenceId = getstate().writeStory.get('sentenceId')
+  if (sentence_id === currentSentenceId) {
+    return dispatch(changeSentenceId('none'))
+  }
+  else {
+    return dispatch(changeSentenceId(sentence_id))
+  }
+}
+
 export const analyzeStoryActions1 = (originalPieceId: number, userBookId: number, pieceNumber: num, microPiece: num) => (dispatch: Function, getstate: Function) => {
 
   let micro_piece_1 = 'f';

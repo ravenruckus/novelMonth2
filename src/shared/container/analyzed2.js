@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import AnalyzedPiece2 from '../component/analyzed-piece2'
 import { changeToneView } from '../action/write-story'
-import { changeSentenceId } from '../action/write-story'
+import { changeSentenceIdActions } from '../action/write-story'
 
 const mapStateToProps = state => ({
   analyzed: state.writeStory.get('analyze2'),
@@ -16,7 +16,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   handleClick: (e, sentence_id) => {
     e.preventDefault()
-    dispatch(changeSentenceId(sentence_id)) },
+    dispatch(changeSentenceIdActions(sentence_id)) },
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AnalyzedPiece2)

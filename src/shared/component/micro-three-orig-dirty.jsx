@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import React, { Component } from 'react'
 
-import { changeSentenceId, getOrigActions } from '../action/write-story'
+import { changeSentenceIdActions, getOrigActions } from '../action/write-story'
 
 
 class MicroThreeOrig extends Component {
@@ -19,7 +19,7 @@ class MicroThreeOrig extends Component {
   handleClick(event, sentence_id) {
     event.preventDefault()
 
-    this.props.changeSentenceId(sentence_id)
+    this.props.changeSentenceIdActions(sentence_id)
 
   }
 
@@ -76,5 +76,5 @@ const mapStateToProps = (state) =>  {
   };
 };
 
-export default connect(mapStateToProps, { changeSentenceId, getOrigActions
+export default connect(mapStateToProps, { changeSentenceIdActions, getOrigActions
 })(MicroThreeOrig);
