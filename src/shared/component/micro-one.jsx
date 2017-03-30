@@ -22,11 +22,11 @@ const MicroOne = ({originalPieceId, userBookId, pieceNumber, loading, analyzedDb
     <MicroOneOrig originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
 
 
-    { loading ?
+    {/* { loading ?
      <h3>Analyzing your story now.</h3>
       :
      <span></span>
-    }
+    } */}
 
     {
       analyzed.length ?

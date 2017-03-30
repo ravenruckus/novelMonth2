@@ -21,40 +21,32 @@ const MicroTwo = ({originalPieceId, userBookId, pieceNumber, loading, analyzedDb
 
     <MicroTwoOrig originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
 
-    <MicroPieceOneDB2 originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
+    {/* <MicroPieceOneDB2 originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} /> */}
 
-    <Analyzed2 />
+    {/* <Analyzed2 /> */}
+
+
+
+
+   {/* { loading ?
+     <h3>Analyzing your story now.</h3>
+      :
+     <span></span>
+    } */}
+
+    {
+      analyzed.length ?
+      <Analyzed2 />
+
+      :
+      <MicroPieceOneDB2 originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
+    }
+
 
     <div>
     <EnterStory2 />
     <AnalyzeButton2 microPiece={2} originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
     </div>
-
-
-    {/* { loading ?
-     <h3>Analyzing your story now.</h3>
-      :
-     <span></span>
-    }
-
-    {
-      analyzed.length ?
-      <Analyzed1 />
-
-      :
-      <MicroPieceOneDB originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
-
-    }
-
-    <div>
-      <EnterStory />
-      <AnalyzeButton1 originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
-    </div>
- */}
-
-
-
-
 
 </div>
 

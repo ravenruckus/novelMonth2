@@ -22,39 +22,36 @@ const MicroThree = ({originalPieceId, userBookId, pieceNumber, loading, analyzed
     <MicroThreeOrig originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
 
 
-    <MicroPieceOneDB3 originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
+    {/* <MicroPieceOneDB3 originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
 
     <Analyzed3 />
 
     <div>
-    <EnterStory3 />
-    <AnalyzeButton3 microPiece={3} originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
-    </div>
-  </div>
+      <EnterStory3 />
+      <AnalyzeButton3 microPiece={3} originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
+      </div>
+    </div> */}
 
 
 
-
-    {/* { loading ?
-     <h3>Analyzing your story now.</h3>
-      :
-     <span></span>
-    }
 
     {
       analyzed.length ?
-      <Analyzed1 />
+      <Analyzed3 />
 
       :
-      <MicroPieceOneDB originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
+      <MicroPieceOneDB3 originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
 
     }
 
     <div>
-      <EnterStory />
-      <AnalyzeButton1 originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
+      <EnterStory3 />
+      <AnalyzeButton3 microPiece={3} originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
     </div>
- */}
+
+
+  </div>
+
 
 
 
