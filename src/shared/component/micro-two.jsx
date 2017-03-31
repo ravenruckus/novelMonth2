@@ -19,10 +19,11 @@ type Props = {
 const MicroTwo = ({originalPieceId, userBookId, pieceNumber, loading, analyzedDb, analyzed }: Props) =>
 
 <div>
-  <Col className="modules" sm={12}>
+  <Col sm={12} className="modules">
     <MicroTwoOrig originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
   </Col>
 
+  <Col className="modules" sm={12} >
   <h3>Your Story</h3>
 
    {/* { loading ?
@@ -33,24 +34,20 @@ const MicroTwo = ({originalPieceId, userBookId, pieceNumber, loading, analyzedDb
 
     {
       analyzed.length ?
-     <Col className="modules" sm={12} >
        <Analyzed2 />
-     </Col>
       :
 
-    <Col  className="modules" sm={12} >
       <MicroPieceOneDB2 originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
-    </Col>
 
     }
+  </Col>
 
 
-    <div>
+
       <Col  className="modules" sm={12}>
       <EnterStory2 />
       <AnalyzeButton2 microPiece={2} originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
       </Col>
-    </div>
 
 </div>
 

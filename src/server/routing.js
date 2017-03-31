@@ -43,7 +43,8 @@ import renderApp from './render-app'
 passport.use(new Strategy({
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  callbackURL: FACEBOOK_CALLBACK,
+  callbackURL: 'http://localhost:8000/login/facebook/callback',
+  // callbackURL: 'https://ravenuckus-capstone-test3.herokuapp.com/login/facebook/callback',
   enableProof: true
     },
     function onSuccessfulLogin(token, refreshToken, profile, done) {
@@ -132,7 +133,7 @@ export default (app: Object) => {
 
   app.get(FACEBOOK_CALLBACK,
     passport.authenticate('facebook', { successRedirect:
-    HELLO_PAGE_ROUTE, failureRedirect: HOME_PAGE_ROUTE }))
+    CREATE_STORY_ROUTE, failureRedirect: HOME_PAGE_ROUTE }))
 
   const ensureAuthenticated = function(req, res, next) {
   if (req.isAuthenticated()) {

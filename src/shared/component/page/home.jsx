@@ -4,6 +4,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 
 import { APP_NAME } from '../../config'
+import Test from '../test.jsx'
 
 const HomePage = () =>
   <div>
@@ -13,8 +14,9 @@ const HomePage = () =>
         { property: 'og:title', content: APP_NAME },
       ]}
     />
-    <h1>{APP_NAME}</h1>
-      <p>Testing changes!!!</p>
+    {/* <h1>{APP_NAME}</h1>
+      <p>Testing changes!!!</p> */}
+      <Test />
     </div>
 
   //link to intro to app and login

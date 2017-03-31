@@ -2,6 +2,8 @@ import { connect } from 'react-redux'
 import React, { Component } from 'react'
 
 import { changeSentenceIdActions, getOrigActions } from '../action/write-story'
+import { Col, Row } from 'react-bootstrap'
+
 
 
 class MicroThreeOrig extends Component {
@@ -29,9 +31,10 @@ class MicroThreeOrig extends Component {
 
     return (
 
-      <div>
+      <Row>
+      <Col md={8} className="original-piece" >
         <h3>Original</h3>
-      <div>
+
 
         {
           this.props.origMicro3.map((el) =>(
@@ -59,9 +62,14 @@ class MicroThreeOrig extends Component {
         )
         }
 
-    </div>
+    </Col>
 
-  </div>
+    <Col md={3} mdOffset={1} className="heros-tip">
+      <h4> THE CALL TO ADVENTURE</h4>
+      <p>"Something shakes up the situation, either from external pressures or from something rising up from deep within, so the hero must face the beginnings of change. " <a href="http://www.thewritersjourney.com/hero%27s_journey.htm" target="_blank">Example of Ordinary </a></p>
+    </Col>
+
+  </Row>
 
     )
   }

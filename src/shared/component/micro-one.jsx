@@ -21,10 +21,11 @@ const MicroOne = ({originalPieceId, userBookId, pieceNumber, loading, analyzedDb
 
 <div>
 
-  <Col className="modules" sm={12}>
+  <Col sm={12} className="modules">
     <MicroOneOrig originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
   </Col>
 
+  <Col className="modules" sm={12} >
     <h3>Your Story</h3>
     {/* { loading ?
      <h3>Analyzing your story now.</h3>
@@ -34,16 +35,13 @@ const MicroOne = ({originalPieceId, userBookId, pieceNumber, loading, analyzedDb
 
     {
       analyzed.length ?
-      <Col className="modules" sm={12} >
        <Analyzed1 />
-      </Col>
 
       :
-      <Col  className="modules" sm={12} >
        <MicroPieceOneDB originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
-     </Col>
-
     }
+  </Col>
+
 
     <Col  className="modules" sm={12}>
       <EnterStory />

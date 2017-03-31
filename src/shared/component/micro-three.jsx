@@ -19,39 +19,31 @@ type Props = {
 const MicroThree = ({originalPieceId, userBookId, pieceNumber, loading, analyzedDb, analyzed }: Props) =>
 
 <div>
+    <Col sm={12} className="modules">
+      <MicroThreeOrig originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
+   </Col>
 
-    <MicroThreeOrig originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
-
+   <Col className="modules" sm={12} >
 
     <h3>Your Story</h3>
 
     {
       analyzed.length ?
-      <Col className="modules" sm={12} >
        <Analyzed3 />
-      </Col>
       :
-      <Col  className="modules" sm={12} >
         <MicroPieceOneDB3 originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
-      </Col>
     }
+  </Col>
 
-    <div>
-      <Col  className="modules" sm={12}>
+
+  <Col  className="modules" sm={12}>
       <EnterStory3 />
       <AnalyzeButton3 microPiece={3} originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
     </Col>
-    </div>
+
 
 
   </div>
-
-
-
-
-
-
-
 
 
 
