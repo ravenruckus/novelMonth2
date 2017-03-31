@@ -30,13 +30,13 @@ class MicroTwoOrig extends Component {
     return (
 
       <div>
-        <h2>Original Piece Micro 2</h2>
+        <h3>Original</h3>
       <div>
 
         {
           this.props.origMicro2.map((el) =>(
         <div key={`${el.sentence_id}orig2`}>
-          <div style={{background: `${el.color}`}} onClick={(event) => this.handleClick(event, `${el.sentence_id}orig2`)} >{el.text}</div>
+          <div className={`${el.color}`} onClick={(event) => this.handleClick(event, `${el.sentence_id}orig2`)} >{el.text}</div>
 
         { this.props.sentenceId == `${el.sentence_id}orig2` ?
 
@@ -61,7 +61,6 @@ class MicroTwoOrig extends Component {
 
     </div>
 
-    <h3>End orig</h3>
   </div>
 
     )

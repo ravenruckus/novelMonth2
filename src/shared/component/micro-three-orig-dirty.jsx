@@ -30,13 +30,13 @@ class MicroThreeOrig extends Component {
     return (
 
       <div>
-        <h2>Original Piece Micro 3</h2>
+        <h3>Original</h3>
       <div>
 
         {
           this.props.origMicro3.map((el) =>(
         <div key={`${el.sentence_id}orig3`}>
-          <div style={{background: `${el.color}`}} onClick={(event) => this.handleClick(event, `${el.sentence_id}orig3`)} >{el.text}</div>
+          <div className={`${el.color}`} onClick={(event) => this.handleClick(event, `${el.sentence_id}orig3`)} >{el.text}</div>
 
         { this.props.sentenceId == `${el.sentence_id}orig3` ?
 
@@ -61,7 +61,6 @@ class MicroThreeOrig extends Component {
 
     </div>
 
-    <h3>End orig</h3>
   </div>
 
     )

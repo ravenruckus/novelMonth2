@@ -30,13 +30,11 @@ class MicroOneDB3 extends Component {
     return (
 
       <div>
-          <h2>In db response three.</h2>
-      <div>
 
         {
           this.props.analyzedDb3.map((el) =>(
         <div key={`${el.sentence_id}db3`}>
-          <div style={{background: `${el.color}`}} onClick={(event) => this.handleClick(event, `${el.sentence_id}db3`)} >{el.text}</div>
+          <div className={`${el.color}`} onClick={(event) => this.handleClick(event, `${el.sentence_id}db3`)} >{el.text}</div>
 
         { this.props.sentenceId == `${el.sentence_id}db3` ?
 
@@ -60,8 +58,6 @@ class MicroOneDB3 extends Component {
         }
 
     </div>
-    <h2>End db response</h2>
-  </div>
 
     )
   }

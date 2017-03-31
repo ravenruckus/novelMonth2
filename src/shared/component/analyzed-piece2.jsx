@@ -21,7 +21,7 @@ const Analyzed2 = ({ analyzed, toneView, handleClick, sentenceId }: Props) =>
       analyzed.map((el) =>(
       <div className="sentences" key={`${el.sentence_id}anal2`}>
 
-        <span onClick={(event) => handleClick(event, `${el.sentence_id}anal2`)} style={{background: `${el.color}`}}>{el.text}</span>
+        <span onClick={(event) => handleClick(event, `${el.sentence_id}anal2`)} className={`${el.color}`}>{el.text}</span>
 
         { sentenceId == `${el.sentence_id}anal2` ?
 

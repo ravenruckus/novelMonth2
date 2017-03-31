@@ -2,9 +2,6 @@
 
 import { connect } from 'react-redux'
 
-// import AnalyzedPiece from '../component/analyzed-piece'
-// import { changeToneView } from '../action/write-story'
-
 import MicroOne from '../component/micro-one'
 
 const mapStateToProps = state => ({

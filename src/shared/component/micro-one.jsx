@@ -7,6 +7,8 @@ import EnterStory from '../container/enter-story'
 import AnalyzeButton1 from '../container/analyze-button1'
 import Analyzed1 from '../container/analyzed1'
 import MicroOneOrig from './micro-one-orig-dirty'
+import { Col } from 'react-bootstrap'
+
 
 type Props = {
   analyzedDb: array,
@@ -19,9 +21,11 @@ const MicroOne = ({originalPieceId, userBookId, pieceNumber, loading, analyzedDb
 
 <div>
 
+  <Col className="modules" sm={12}>
     <MicroOneOrig originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
+  </Col>
 
-
+    <h3>Your Story</h3>
     {/* { loading ?
      <h3>Analyzing your story now.</h3>
       :
@@ -30,22 +34,21 @@ const MicroOne = ({originalPieceId, userBookId, pieceNumber, loading, analyzedDb
 
     {
       analyzed.length ?
-      <Analyzed1 />
+      <Col className="modules" sm={12} >
+       <Analyzed1 />
+      </Col>
 
       :
-      <MicroPieceOneDB originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
+      <Col  className="modules" sm={12} >
+       <MicroPieceOneDB originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
+     </Col>
 
     }
 
-    <div>
+    <Col  className="modules" sm={12}>
       <EnterStory />
       <AnalyzeButton1 microPiece={1} originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
-    </div>
-
-
-
-
-
+    </Col>
 
 </div>
 

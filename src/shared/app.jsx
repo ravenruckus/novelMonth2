@@ -4,13 +4,11 @@ import Helmet from 'react-helmet'
 import React from 'react'
 import { Switch } from 'react-router'
 import { Route } from 'react-router-dom'
-import Nav from './component/nav'
+// import Nav from './component/nav'
 import HomePage from './component/page/home'
 import AppIntro from './component/page/app-intro'
-// import CreateStory from './component/page/create-story'
 import CreateStory from './container/create-story-container'
 import Dashboard from './component/page/dashboard'
-// import WorkArea from './component/page/work-area'
 import WorkArea from './container/work-area-container'
 
 import HelloPage from './component/page/hello'
@@ -30,7 +28,7 @@ import {
 const App = () =>
   <div>
     <Helmet titleTemplate={`%s | ${APP_NAME}`} defaultTitle={APP_NAME} />
-    <Nav />
+    {/* <Nav /> */}
     <Switch>
       <Route exact path={HOME_PAGE_ROUTE} render={() => <HomePage />} />
       <Route path={APP_INTRO_PAGE_ROUTE} render={() => <AppIntro />} />

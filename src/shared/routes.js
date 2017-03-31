@@ -12,9 +12,6 @@ export const DASHBOARD_ROUTE = '/dashboard'
 export const WORK_AREA_ROUTE ='/work-area/:originalPieceId/:userBookId/:pieceNumber/'
 
 
-// export const getPieceRoute = (userBookId: ?number) => `/api/get-micro-piece/${userBookId || ':userBookId'}`
-
-
 export const getPieceRoute = (userBookId: ?number, pieceNumber: ?number, micro_piece_1: string, micro_piece_2: string, micro_piece_3: string) => `/api/get-micro-piece/${userBookId || ':userBookId'}/${pieceNumber || ':pieceNumber'}/${micro_piece_1 || ':micro_piece_1'}/${micro_piece_2 || ':micro_piece_2'}/${micro_piece_3 || ':micro_piece_3'}/`
 
 export const deletePieceRoute = (userPieceId: ?number) => `/api/delete-micro-piece/${userPieceId || ':userPieceId'}`

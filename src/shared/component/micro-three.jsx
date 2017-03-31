@@ -7,6 +7,7 @@ import EnterStory3 from '../container/enter-story3'
 import AnalyzeButton3 from '../container/analyze-button3'
 import Analyzed3 from '../container/analyzed3'
 import MicroThreeOrig from './micro-three-orig-dirty'
+import { Col } from 'react-bootstrap'
 
 type Props = {
   analyzedDb: array,
@@ -22,31 +23,24 @@ const MicroThree = ({originalPieceId, userBookId, pieceNumber, loading, analyzed
     <MicroThreeOrig originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
 
 
-    {/* <MicroPieceOneDB3 originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
-
-    <Analyzed3 />
-
-    <div>
-      <EnterStory3 />
-      <AnalyzeButton3 microPiece={3} originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
-      </div>
-    </div> */}
-
-
-
+    <h3>Your Story</h3>
 
     {
       analyzed.length ?
-      <Analyzed3 />
-
+      <Col className="modules" sm={12} >
+       <Analyzed3 />
+      </Col>
       :
-      <MicroPieceOneDB3 originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
-
+      <Col  className="modules" sm={12} >
+        <MicroPieceOneDB3 originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
+      </Col>
     }
 
     <div>
+      <Col  className="modules" sm={12}>
       <EnterStory3 />
       <AnalyzeButton3 microPiece={3} originalPieceId={originalPieceId} userBookId={userBookId} pieceNumber={pieceNumber} />
+    </Col>
     </div>
 
 

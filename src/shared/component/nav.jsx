@@ -1,6 +1,7 @@
 // @flow
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+
 import {
   HOME_PAGE_ROUTE,
   HELLO_PAGE_ROUTE,
@@ -29,5 +30,6 @@ const Nav = () =>
       ))}
     </ul>
   </nav>
+
 
 export default Nav

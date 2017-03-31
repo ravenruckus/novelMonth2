@@ -10,7 +10,9 @@ import MicroOne from '../../container/micro-one-container'
 import MicroTwo from '../../container/micro-two-container'
 import MicroThree from '../../container/micro-three-container'
 
-// import MicroPieceOneDB from '../../component/micro-piece-one-db'
+import { Grid, Row, Col, PageHeader } from 'react-bootstrap'
+import Nav from '../nav'
+
 
 
 const title = 'Work Area'
@@ -31,18 +33,27 @@ const WorkArea = ({ match, analyze1State, loading }) =>
         { property: 'og:title', content: title },
       ]}
     />
+    {/* <Nav /> */}
 
-    <h1>{title}</h1>
+    <Grid className="workarea">
+      <PageHeader>{title} <small>The Wizard of Oz - The Cyclone</small></PageHeader>
 
-     <h1>Micro Piece One</h1>
+    <Row className="show-grid micro-piece micro-piece1">
+     <h2>Micro Piece One</h2>
      <MicroOne originalPieceId={match.params.originalPieceId} userBookId={match.params.userBookId} pieceNumber={match.params.pieceNumber} />
+    </Row>
 
-   <h1>Micro Piece Two</h1>
+    <Row className="micro-piece micro-piece2">
+      <h2>Micro Piece Two</h2>
+      <MicroTwo originalPieceId={match.params.originalPieceId} userBookId={match.params.userBookId} pieceNumber={match.params.pieceNumber} />
+   </Row>
 
-    <MicroTwo originalPieceId={match.params.originalPieceId} userBookId={match.params.userBookId} pieceNumber={match.params.pieceNumber} />
+    <Row className="micro-piece micro-piece3">
+      <h2>Micro Piece Three</h2>
+      <MicroThree originalPieceId={match.params.originalPieceId} userBookId={match.params.userBookId} pieceNumber={match.params.pieceNumber} />
+    </Row>
 
-
-    <MicroThree originalPieceId={match.params.originalPieceId} userBookId={match.params.userBookId} pieceNumber={match.params.pieceNumber} /> 
+   </Grid>
 
 
 {/*
