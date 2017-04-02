@@ -37,18 +37,24 @@ const WorkArea = ({ match, analyze1State, loading }) =>
 
     <Grid className="workarea">
       <PageHeader>{title} <small>The Wizard of Oz - The Cyclone</small></PageHeader>
+      <div className="instructions">
+        <ul>
+          <li>Click on a sentence to see how likely it is to contain the listed emotions.</li>
+          <li>Read the tips in the grey sidebar for ideas on how to approach each section of your story.</li>
+      </ul>
+    </div>
 
     <Row className="show-grid micro-piece micro-piece1">
      <h2>Micro Piece One</h2>
      <MicroOne originalPieceId={match.params.originalPieceId} userBookId={match.params.userBookId} pieceNumber={match.params.pieceNumber} />
     </Row>
 
-    <Row className="micro-piece micro-piece2">
+    <Row className="show-grid micro-piece micro-piece2">
       <h2>Micro Piece Two</h2>
       <MicroTwo originalPieceId={match.params.originalPieceId} userBookId={match.params.userBookId} pieceNumber={match.params.pieceNumber} />
    </Row>
 
-    <Row className="micro-piece micro-piece3">
+    <Row className="show-grid micro-piece micro-piece3">
       <h2>Micro Piece Three</h2>
       <MicroThree originalPieceId={match.params.originalPieceId} userBookId={match.params.userBookId} pieceNumber={match.params.pieceNumber} />
     </Row>

@@ -8,6 +8,6 @@ type Props = {
 }
 
 const Button = ({ label, handleClick, originalPieceId, userBookId, pieceNumber, microPiece }: Props) =>
-  <button onClick={(event) => handleClick(event, originalPieceId, userBookId, pieceNumber, microPiece)}>{label}</button>
+  <button className="analyze-button" onClick={(event) => handleClick(event, originalPieceId, userBookId, pieceNumber, microPiece)}>{label}</button>
 
 export default Button

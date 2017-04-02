@@ -29,8 +29,9 @@ class MicroTwoOrig extends Component {
 
     return (
 
-      <Row>
-      <Col md={8} className="original-piece" >
+  <div className="original-piece">
+
+    <div className="originalWriting" >
         <h3>Original</h3>
 
         {
@@ -40,8 +41,8 @@ class MicroTwoOrig extends Component {
 
         { this.props.sentenceId == `${el.sentence_id}orig2` ?
 
-          <div> {el.tones.tones.map((el2) => (
-            <div key={el2.tone_id}>
+          <div className="tone-group"> {el.tones.tones.map((el2) => (
+            <div className="tones" key={el2.tone_id}>
               <div>{el2.tone_name}</div>
               <div>{el2.score}</div>
             </div>
@@ -59,14 +60,13 @@ class MicroTwoOrig extends Component {
         )
         }
 
-      </Col>
-
-      <Col md={3} mdOffset={1} className="heros-tip">
+      </div>
+      <div className="heros-tip">
         <h4>THE ORDINARY WORLD</h4>
         <p>"The hero, uneasy, uncomfortable or unaware, is introduced sympathetically so the audience can identify with the situation or dilemma.  The hero is shown against a background of environment, heredity, and personal history.  Some kind of polarity in the hero’s life is pulling in different directions and causing stress." <a href="http://www.thewritersjourney.com/hero%27s_journey.htm" target="_blank">Example of Ordinary </a></p>
-      </Col>
+      </div>
 
-      </Row>
+    </div>
     )
   }
 };

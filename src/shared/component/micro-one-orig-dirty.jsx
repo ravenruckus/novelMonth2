@@ -29,10 +29,10 @@ class MicroOneOrig extends Component {
 
     return (
 
-      <Row>
-      <Col md={8} className="original-piece" >
-        <h3>Original</h3>
+      <div className="original-piece">
 
+        <div className="originalWriting" >
+          <h3>Original</h3>
 
         {
           this.props.origMicro1.map((el) =>(
@@ -41,10 +41,10 @@ class MicroOneOrig extends Component {
 
         { this.props.sentenceId == `${el.sentence_id}orig1` ?
 
-          <div> {el.tones.tones.map((el2) => (
-            <div key={el2.tone_id}>
+          <div className="tone-group"> {el.tones.tones.map((el2) => (
+            <div className="tones" key={el2.tone_id}>
               <div>{el2.tone_name}</div>
-              <div>{el2.score}</div>
+              <div>{el2.score.toFixed(2)}</div>
             </div>
 
           ))}
@@ -59,15 +59,23 @@ class MicroOneOrig extends Component {
         )
         )
         }
+      </div>
 
-      </Col>
-
-      <Col md={3} mdOffset={1} className="heros-tip">
+      <div className="heros-tip">
+        <h3>The Hero's Journey</h3>
         <h4>THE ORDINARY WORLD</h4>
         <p>"The hero, uneasy, uncomfortable or unaware, is introduced sympathetically so the audience can identify with the situation or dilemma.  The hero is shown against a background of environment, heredity, and personal history.  Some kind of polarity in the hero’s life is pulling in different directions and causing stress." <a href="http://www.thewritersjourney.com/hero%27s_journey.htm" target="_blank">Example of Ordinary </a></p>
-      </Col>
+        <p>The Ordinary World is what the character's life is like before the adventure begins. In the begining of the movie, <i>The Wizard of Oz</i>, the film is in black and white to show the stark contrast between Dorothy's life before the adventure begins and the magical world she enters. This is a good place to describe the scenery and introduce influential people in the main character's life. To make the story more intersting to read - show don't tell by using active language.</p>
 
-    </Row>
+        <h4>INFLUENTIAL PEOPLE</h4>
+        <p>Show the relationship between characters, don't tell and use active language. For example: "When Dorothy, who was an orphan, first came to her, Aunt Em had been so startled by the child's laughter that she would scream and press her hand upon her heart..."</p>
+
+        <h4>SCENERY</h4>
+        <p>Show the surroundings using active language: "The sun had baked the plowed land into a gray mass, with little cracks running through it."</p>
+      </div>
+
+    </div>
+
 
     )
   }

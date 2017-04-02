@@ -31,8 +31,9 @@ class MicroThreeOrig extends Component {
 
     return (
 
-      <Row>
-      <Col md={8} className="original-piece" >
+      <div className="original-piece">
+
+        <div className="originalWriting" >
         <h3>Original</h3>
 
 
@@ -43,8 +44,8 @@ class MicroThreeOrig extends Component {
 
         { this.props.sentenceId == `${el.sentence_id}orig3` ?
 
-          <div> {el.tones.tones.map((el2) => (
-            <div key={el2.tone_id}>
+          <div className="tone-group"> {el.tones.tones.map((el2) => (
+            <div className="tones" key={el2.tone_id}>
               <div>{el2.tone_name}</div>
               <div>{el2.score}</div>
             </div>
@@ -62,14 +63,15 @@ class MicroThreeOrig extends Component {
         )
         }
 
-    </Col>
+    </div>
 
-    <Col md={3} mdOffset={1} className="heros-tip">
+    <div className="heros-tip">
       <h4> THE CALL TO ADVENTURE</h4>
       <p>"Something shakes up the situation, either from external pressures or from something rising up from deep within, so the hero must face the beginnings of change. " <a href="http://www.thewritersjourney.com/hero%27s_journey.htm" target="_blank">Example of Ordinary </a></p>
-    </Col>
+      </div>
 
-  </Row>
+      </div>
+
 
     )
   }

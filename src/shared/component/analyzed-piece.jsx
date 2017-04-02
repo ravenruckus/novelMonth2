@@ -17,14 +17,13 @@ const Analyzed = ({ analyzed, toneView, handleClick, sentenceId }: Props) =>
 
     {
       analyzed.map((el) =>(
-      <div className="sentences" key={`${el.sentence_id}anal1`}>
-
-        <span onClick={(event) => handleClick(event, `${el.sentence_id}anal1`)} className={`${el.color}`}>{el.text}</span>
+      <div  key={`${el.sentence_id}anal1`}>
+        <div onClick={(event) => handleClick(event, `${el.sentence_id}anal1`)} className={`${el.color}`}>{el.text}</div>
 
         { sentenceId == `${el.sentence_id}anal1` ?
 
-          <div className="tones">  {el.tones.tones.map((el2) => (
-              <div key={el2.tone_id}>
+          <div className="tone-group">  {el.tones.tones.map((el2) => (
+              <div className="tones" key={el2.tone_id}>
                 <div>{el2.tone_name}</div>
                 <div>{el2.score}</div>
               </div>

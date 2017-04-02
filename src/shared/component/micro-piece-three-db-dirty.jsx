@@ -38,8 +38,8 @@ class MicroOneDB3 extends Component {
 
         { this.props.sentenceId == `${el.sentence_id}db3` ?
 
-          <div> {el.tones.tones.map((el2) => (
-            <div key={el2.tone_id}>
+          <div className="tone-group"> {el.tones.tones.map((el2) => (
+            <div className="tones" key={el2.tone_id}>
               <div>{el2.tone_name}</div>
               <div>{el2.score}</div>
             </div>

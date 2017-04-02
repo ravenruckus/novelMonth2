@@ -13,7 +13,7 @@ type Props = {
 
 const TextForm = ({ sectionTitle, controlLabel, type, title, componentClass, handleChange }: Props) =>
   <FormGroup controlId={sectionTitle}>
-      <ControlLabel>{controlLabel}</ControlLabel>
+      <ControlLabel style={{marginBottom: '5px'}}>{controlLabel}</ControlLabel>
       <FormControl
         name={sectionTitle}
         type={type}
