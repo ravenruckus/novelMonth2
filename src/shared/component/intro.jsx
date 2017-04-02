@@ -7,7 +7,7 @@ import LoginButton from './login-button'
 
 
 
-const Test = () =>
+const Intro = () =>
 
   <div className="intro">
 
@@ -37,7 +37,7 @@ const Test = () =>
 
   <div className="color-instructions">
   <h4>Click on a sentence to see the emotion scores Watson gave it.</h4>
-  <img src="http://media.aliciagyori.com/click-emotionss.png" alt="click to see emotions" />
+  <img src="https://s3-us-west-2.amazonaws.com/images.aliciagyori.com/click_emotions3.png" alt="click to see emotions" />
   </div>
 
    <div className="color-instructions">
@@ -67,4 +67,4 @@ const Test = () =>
 
  </div>
 
-export default Test
+export default Intro

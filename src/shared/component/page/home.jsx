@@ -20,7 +20,5 @@ const HomePage = () =>
 
     </div>
 
-  //link to intro to app and login
-  //make duplicate but add button for login, for inro to app and login
 
 export default HomePage
