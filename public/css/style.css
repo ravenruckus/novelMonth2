@@ -1,34 +1,51 @@
 @import url('https://fonts.googleapis.com/css?family=Dynalight');
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:700|Roboto');
 
+
+
 body {
-  /*margin: auto;*/
   font-family: sans-serif;
-  background-color: #3A3A3A;
   font-family: 'Roboto', sans-serif;
+  background-color: #3A3A3A;
+/*  background: -webkit-linear-gradient(#222, #fff, #333);
+  background: -moz-linear-gradient(#222, #fff, #333);
+  background: linear-gradient(#222, #fff, #333);*/
+  /*background-color: #29abe2;*/
+  background: -webkit-linear-gradient(#29abe2, #ffffff 20%, #333333);
+  background: -moz-linear-gradient(#29abe2, #ffffff 20%, #333333);
+  background: linear-gradient(#0637a2, #ffffff 20%, #333333);
 }
 
 h1 {
   /*color: limegreen;*/
 }
-.test {
+img {
+  width: 100%;
+}
+.home {
+
+}
+.intro {
   background-color: #fff;
   padding: 5%;
   border-radius: 4px;
   width: 70%;
   margin-left: 15%;
   margin-top: 25px;
+  -webkit-box-shadow: 10px 10px 28px -4px rgba(0,0,0,0.5);
+  -moz-box-shadow: 10px 10px 28px -4px rgba(0,0,0,0.5);
+  box-shadow: 10px 10px 28px -4px rgba(0,0,0,0.5);
+}
+
+.intro {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 
 .workarea {
   width: 90%;
   margin-left: 5%;
-  /*background-color: #fff;*/
-  /*padding: 5%;
-  border-radius: 5px;
-  -webkit-box-shadow: 7px -4px 31px -4px rgba(0,0,0,0.52);
-  -moz-box-shadow: 7px -4px 31px -4px rgba(0,0,0,0.52);
-  box-shadow: 7px -4px 31px -4px rgba(0,0,0,0.52);*/
 }
 
 .workarea h2 {
@@ -51,39 +68,91 @@ h1 {
   border-radius: 10px;
 }
 
-/*.micro-piece3 {
-  border-bottom: none;
-}*/
-/*.modules {
-  margin-bottom: 35px;
-}*/
-/*.heros-tip {
-  background: #3A3A3A;
-  color: #fff;
-  padding: 3%;
-  border-radius: 6px;
-  border: 3px #888 solid;
-  margin-top: 10px;
-}
-.original-piece {
-  -webkit-box-shadow: -1px 10px 53px -8px rgba(112,112,112,0.37);
-  -moz-box-shadow: -1px 10px 53px -8px rgba(112,112,112,0.37);
-  box-shadow: -1px 10px 53px -8px rgba(112,112,112,0.37);
-  border-radius: 8px;
-  padding-bottom: 5%;
-  margin-bottom: 15px;
-}*/
-/*.original-piece h3 {
+.login {
   background-color: #3A3A3A;
   color: #fff;
   padding: 1%;
-  border-radius: 4px;
-}*/
+  border-radius: 8px;
+  font-size: 1.5rem;
+}
 
+.login a {
+  color: #fff;
+}
+
+.start {
+  width: 50%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.color-instructions {
+  margin-top: 20px;
+  width: 80%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+.color-instructions img {
+  width: 90%;
+  margin-top: 10px;
+}
+
+/*.color-instructions img {
+  margin-top:
+}*/
+.color-instructions h4 {
+  color: rgb(13, 87, 198);
+
+}
+.create-story {
+  min-height: 800px;
+}
+
+
+.create-story label {
+  font-size: 2.5rem;
+  color: #333;
+}
+.create-story button {
+  background-color: rgb(13, 87, 198);
+  padding: 1.5%;
+  border-radius: 8px;
+  color: #fff;
+
+}
+.logout {
+  background-color: #3A3A3A;
+  color: #fff;
+  padding: 3%;
+  border-radius: 8px;
+  font-size: 1.5rem;
+}
+.work-logout {
+  background-color: #fff;
+  color: #333;
+  padding: 1%;
+  border-radius: 8px;
+  font-size: 1.5rem;
+}
+
+.work-logout a {
+  color: #333
+}
+
+.create-story .page-header {
+  /*border-bottom: 1px solid rgb(13, 87, 198);*/
+  color: #3A3A3A;
+}
+.create-story .page-header small{
+  color: #3A3A3A;
+
+}
 .userTitle {
   color: blue;
   font-family: 'Dynalight', cursive;
-  font-size: 3rem;
+  font-size: 4rem;
   color: rgb(13, 87, 198);
 }
 .white {
@@ -213,7 +282,7 @@ textarea.form-control {
   margin-bottom: 25px;
 }
 
- @media all and (max-width: 1100px) {
+ @media all and (max-width: 900px) {
    .original-piece {
      flex-flow: column;
    }

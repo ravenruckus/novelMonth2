@@ -26,9 +26,11 @@ import {
 } from '../shared/routes'
 
 const App = () =>
-  <div>
+  <div className="app">
     <Helmet titleTemplate={`%s | ${APP_NAME}`} defaultTitle={APP_NAME} />
     {/* <Nav /> */}
+    <img src="http://media.aliciagyori.com/raventop.png" alt="alicia" />
+
     <Switch>
       <Route exact path={HOME_PAGE_ROUTE} render={() => <HomePage />} />
       <Route path={APP_INTRO_PAGE_ROUTE} render={() => <AppIntro />} />
@@ -39,6 +41,9 @@ const App = () =>
       <Route path={HELLO_ASYNC_PAGE_ROUTE} render={() => <HelloAsyncPage />} />
       <Route component={NotFoundPage} />
     </Switch>
-  </div>
+
+    <img src="http://media.aliciagyori.com/ravenbottom.png" alt="raven footer" />
+   </div>
+
 
 export default App

@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
   return {
   classy: '',
   sectionTitle: 'storyText',
-  controlLabel: 'Story Text',
+  controlLabel: 'New Title',
   type: 'text',
   title: state.createStory.get('title'),
   componentClass: 'input',
