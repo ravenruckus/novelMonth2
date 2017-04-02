@@ -3,20 +3,21 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 
+
 import { APP_NAME } from '../../config'
-import Test from '../test.jsx'
+import Intro from '../intro.jsx'
 
 const HomePage = () =>
-  <div>
+  <div >
     <Helmet
       meta={[
-        { name: 'description', content: 'Hello App is an app to say hello' },
+        { name: 'description', content: 'Novel Month' },
         { property: 'og:title', content: APP_NAME },
       ]}
     />
-    {/* <h1>{APP_NAME}</h1>
-      <p>Testing changes!!!</p> */}
-      <Test />
+
+      <Intro />
+
     </div>
 
   //link to intro to app and login

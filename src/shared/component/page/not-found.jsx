@@ -6,7 +6,7 @@ import Helmet from 'react-helmet'
 const title = 'Page Not Found'
 
 const NotFoundPage = () =>
-  <div>
+  <div style={{minHeight: '800px', minWidth: '80%', marginLeft: '10%', color: '#fff'}}>
     <Helmet
       title="title"
       meta={[

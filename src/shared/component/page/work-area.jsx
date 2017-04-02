@@ -11,11 +11,14 @@ import MicroTwo from '../../container/micro-two-container'
 import MicroThree from '../../container/micro-three-container'
 
 import { Grid, Row, Col, PageHeader } from 'react-bootstrap'
+import  LogoutButton  from '../logout-button.jsx'
+
 import Nav from '../nav'
 
 
 
 const title = 'Work Area'
+const workLogout = 'work-logout'
 
 type Props = {
   analyze1State: array,
@@ -58,6 +61,8 @@ const WorkArea = ({ match, analyze1State, loading }) =>
       <h2>Micro Piece Three</h2>
       <MicroThree originalPieceId={match.params.originalPieceId} userBookId={match.params.userBookId} pieceNumber={match.params.pieceNumber} />
     </Row>
+
+    <LogoutButton classStyle={workLogout}/>
 
    </Grid>
 

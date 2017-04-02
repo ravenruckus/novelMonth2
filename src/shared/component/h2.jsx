@@ -9,6 +9,6 @@ type Props = {
 
 const H2 = ({ text, classy }: Props) =>
 
-  <h2 className={classy}>{text}</h2>
+  <h2 className={classy}>"{text}"</h2>
 
 export default H2

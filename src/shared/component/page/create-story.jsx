@@ -10,7 +10,7 @@ import {Link, Redirect } from 'react-router-dom'
 import CreateStoryTitleField from '../../container/create-story-title'
 import StartStoryButton from '../../container/start-story-button'
 import UserTitle from '../../container/display-story-info'
-
+import { Grid, Row, Col, PageHeader } from 'react-bootstrap'
 
 
 type Props = {
@@ -31,9 +31,11 @@ const CreateStory = ({ newStory, newStoryId }: Props) =>
       ]}
     />
 
-      <h1>{title}</h1>
-      <p>This is where you create a story</p>
-      <p>Your new story: {newStory}</p>
+
+
+ <Grid className="create-story">
+      <PageHeader>{title} - <small>What Title Would You Like to Give Your Story?</small></PageHeader>
+
 
       { newStory ?
         // <div>
@@ -48,14 +50,18 @@ const CreateStory = ({ newStory, newStoryId }: Props) =>
         <Redirect push to={`/work-area/1/${newStoryId}/1/`}>Test two</Redirect>
 
        :
-        <div>
+
+        <Row style={{width: '60%', marginLeft: '20%'}}>
           <UserTitle />
           <form>
             <CreateStoryTitleField />
             <StartStoryButton />
           </form>
-        </div>
+        </Row>
   }
+
+  </Grid>
+
 
   </div>
   export default CreateStory
