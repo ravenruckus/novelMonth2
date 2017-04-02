@@ -37,7 +37,7 @@ const Test = () =>
 
   <div className="color-instructions">
   <h4>Click on a sentence to see the emotion scores Watson gave it.</h4>
-  <img src="http://media.aliciagyori.com/click-emotions.png" alt="click to see emotions" />
+  <img src="http://media.aliciagyori.com/click-emotionss.png" alt="click to see emotions" />
   </div>
 
    <div className="color-instructions">
@@ -45,8 +45,6 @@ const Test = () =>
   <p>Sentences high in an emotion are highlighted.</p>
     <img src="http://media.aliciagyori.com/emotion-colors.png" alt="emotion colors" />
   </div>
-
-
 
 
   <h3>How?</h3>
