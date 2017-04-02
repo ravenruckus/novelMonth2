@@ -5,6 +5,8 @@ import Helmet from 'react-helmet'
 
 import HelloButton from '../../container/hello-button'
 import Message from '../../container/message'
+import Test2 from '../test2.jsx'
+
 
 const title = 'Hello Page'
 
@@ -18,6 +20,8 @@ const HelloPage = () =>
       ]}
     />
       <h1>{title}</h1>
+
+      <Test2 />
     <Message />
     <HelloButton />
   </div>
