@@ -11,7 +11,7 @@ import MicroTwo from '../../container/micro-two-container'
 import MicroThree from '../../container/micro-three-container'
 
 import { Grid, Row, Col, PageHeader } from 'react-bootstrap'
-import  LogoutButton  from '../logout-button.jsx'
+// import  LogoutButton  from '../logout-button.jsx'
 
 import Nav from '../nav'
 

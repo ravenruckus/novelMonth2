@@ -5,7 +5,7 @@ import Helmet from 'react-helmet'
 
 
 import { APP_NAME } from '../../config'
-// import Intro from '../intro.jsx'
+import Intro2 from '../intro2.jsx'
 
 const HomePage = () =>
   <div >
