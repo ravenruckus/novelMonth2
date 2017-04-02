@@ -12,6 +12,7 @@ import DashboardNav from '../dashboard-nav'
 
 
 
+
 const title = 'Dashboard'
 const origPiece = 1
 const userBk = 1
@@ -31,7 +32,7 @@ const Dashboard = ({match}) =>
     <h1>{title}</h1>
     <p>This is the dashboard where you can view your story in progress and chose a section to work on.</p>
 
-    
+
     {/* <Link to="/work-area" replace > Test </Link> */}
 
     <DashboardNav />

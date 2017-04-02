@@ -5,7 +5,8 @@ import Helmet from 'react-helmet'
 
 
 import { APP_NAME } from '../../config'
-import Intro2 from '../intro2.jsx'
+import Test2 from '../test.jsx'
+// import Intro2 from '../intro2.jsx'
 
 const HomePage = () =>
   <div >
@@ -16,7 +17,8 @@ const HomePage = () =>
       ]}
     />
 
-      {/* <Intro /> */}
+      {/* <Intro2 /> */}
+      <Test2 />
 
     </div>
 
