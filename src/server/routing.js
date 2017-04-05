@@ -45,7 +45,6 @@ passport.use(new Strategy({
   clientSecret: process.env.CLIENT_SECRET,
   // callbackURL: 'http://localhost:8000/login/facebook/callback',
   callbackURL: 'https://aliciagyori-novelmonth.herokuapp.com/login/facebook/callback',
-  enableProof: true
     },
     function onSuccessfulLogin(token, refreshToken, profile, done) {
       done(null, {token, profile});
