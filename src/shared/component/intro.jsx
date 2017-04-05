@@ -43,7 +43,7 @@ const Intro = () =>
    <div className="color-instructions">
   <h4 style={{color: 'rgb(13, 87, 198)'}}> View the emotional range of your piece at a glance. </h4>
   <p>Sentences high in an emotion are highlighted.</p>
-    <img src="http://media.aliciagyori.com/emotion-colors.png" alt="emotion colors" />
+    <img src="https://s3-us-west-2.amazonaws.com/images.aliciagyori.com/emotion-colors.png" />
   </div>
 
 
