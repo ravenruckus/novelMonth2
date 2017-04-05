@@ -925,7 +925,7 @@ exports.seed = function(knex) {
         {
             "color": "blue",
             "sentence_id": 7,
-            "text": "\"I'll go lookafter the stock.\"",
+            "text": "\"I'll go look after the stock.\"",
             "tones": {
                 "category_id": "emotion_tone",
                 "category_name": "Emotion Tone",
@@ -961,7 +961,7 @@ exports.seed = function(knex) {
         {
             "color": "white",
             "sentence_id": 8,
-            "text": "Then he ran toward the sheds where the cows andhorses were kept.Aunt Em dropped her work and came to the door.",
+            "text": "Then he ran toward the sheds where the cows andhorses were kept. Aunt Em dropped her work and came to the door.",
             "tones": {
                 "category_id": "emotion_tone",
                 "category_name": "Emotion Tone",
