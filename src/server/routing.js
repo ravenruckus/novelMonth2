@@ -43,8 +43,8 @@ import renderApp from './render-app'
 passport.use(new Strategy({
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  callbackURL: 'http://localhost:8000/login/facebook/callback',
-  // callbackURL: 'https://aliciagyori-novelmonth.herokuapp.com/login/facebook/callback',
+  // callbackURL: 'http://localhost:8000/login/facebook/callback',
+  callbackURL: 'https://aliciagyori-novelmonth.herokuapp.com/login/facebook/callback',
   enableProof: true
     },
     function onSuccessfulLogin(token, refreshToken, profile, done) {
