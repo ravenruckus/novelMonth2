@@ -6,6 +6,8 @@ import { createAction } from 'redux-actions'
 // import { ENTER_NEW_STORY } from '../../shared/routes'
 // import { writeStoryReducer } from '../../shared/routes'
 import { analyzePieceRoute, getPieceRoute,  getOriginalRoute } from '../../shared/routes'
+import  utf8  from 'utf8'
+import axios from 'axios'
 
 
 
@@ -119,6 +121,61 @@ export const changeSentenceIdActions = (sentence_id: string) => (dispatch: Funct
   }
 }
 
+// export const analyzeStoryActions1 = (originalPieceId: number, userBookId: number, pieceNumber: num, microPiece: num) => (dispatch: Function, getstate: Function) => {
+//
+//   let micro_piece_1 = 'f';
+//   let micro_piece_2 = 'f';
+//   let micro_piece_3 = 'f';
+//   let completed = 'f';
+//   let text = []
+//
+//   if (microPiece === 1) {
+//     micro_piece_1 = 't'
+//     text = getstate().writeStory.get('piece1')
+//     console.log('text before encode', text)
+//     text = utf8.encode(text)
+//     console.log('text', typeof text)
+//     dispatch(analyzePiece1Request())
+//   } else if (microPiece === 2) {
+//     micro_piece_2 = 't'
+//     text = getstate().writeStory.get('piece2')
+//     dispatch(analyzePiece2Request())
+//   } else if (microPiece === 3) {
+//     micro_piece_3 = 't'
+//     text = getstate().writeStory.get('piece3')
+//     dispatch(analyzePiece3Request())
+//   }
+//
+//   console.log(fetch(analyzePieceRoute(originalPieceId, userBookId, pieceNumber, text, micro_piece_2, micro_piece_1, micro_piece_3, completed), { method: 'POST', credentials: 'same-origin' }))
+//    return fetch(analyzePieceRoute(originalPieceId, userBookId, pieceNumber, text, micro_piece_2, micro_piece_1, micro_piece_3, completed), { method: 'POST', credentials: 'same-origin', headers: {'Content-Type': 'text/plain'} })
+//     .then((res) => {
+//       if (!res.ok) throw Error(res.statusText)
+//       return res.json()
+//     })
+//
+//     .then((data) => {
+//       if (!data) throw Error('No story piece received')
+//       const sentences = data.data
+//       if (microPiece === 1) {
+//         dispatch(analyzePiece1Success(sentences))
+//       } else if (microPiece === 2) {
+//         dispatch(analyzePiece2Success(sentences))
+//       } else if (microPiece === 3) {
+//         dispatch(analyzePiece3Success(sentences))
+//       }
+//     })
+//
+//     .catch(() => {
+//       if (microPiece === 1) {
+//         dispatch(analyzePiece1Failure())
+//       } else if (microPiece === 2) {
+//         dispatch(analyzePiece2Failure())
+//       } else if (microPiece === 3) {
+//         dispatch(analyzePiece3Failure())
+//       }
+//     })
+//   }
+
 export const analyzeStoryActions1 = (originalPieceId: number, userBookId: number, pieceNumber: num, microPiece: num) => (dispatch: Function, getstate: Function) => {
 
   let micro_piece_1 = 'f';
@@ -130,6 +187,9 @@ export const analyzeStoryActions1 = (originalPieceId: number, userBookId: number
   if (microPiece === 1) {
     micro_piece_1 = 't'
     text = getstate().writeStory.get('piece1')
+    console.log('text before encode', text)
+    text = utf8.encode(text)
+    console.log('text', typeof text)
     dispatch(analyzePiece1Request())
   } else if (microPiece === 2) {
     micro_piece_2 = 't'
@@ -140,17 +200,23 @@ export const analyzeStoryActions1 = (originalPieceId: number, userBookId: number
     text = getstate().writeStory.get('piece3')
     dispatch(analyzePiece3Request())
   }
-   return fetch(analyzePieceRoute(originalPieceId, userBookId, pieceNumber, text, micro_piece_2, micro_piece_1, micro_piece_3, completed), { method: 'POST', credentials: 'same-origin' })
-    .then((res) => {
-      if (!res.ok) throw Error(res.statusText)
-      return res.json()
-    })
 
+  console.log(axios.post(analyzePieceRoute(originalPieceId, userBookId, pieceNumber, text, micro_piece_2, micro_piece_1, micro_piece_3, completed)))
+   return axios.post(analyzePieceRoute(originalPieceId, userBookId, pieceNumber, text, micro_piece_2, micro_piece_1, micro_piece_3, completed))
+    .then((res) => {
+      console.log('res', res.data)
+      // if (!res.ok) throw Error(res.statusText)
+      return res
+    })
     .then((data) => {
+      console.log('data', data.data)
       if (!data) throw Error('No story piece received')
-      const sentences = data.data
+      const sentences = data.data.data
+      console.log('sentences', sentences)
       if (microPiece === 1) {
         dispatch(analyzePiece1Success(sentences))
+        getstate()
+        console.log('after dispatch success', getstate())
       } else if (microPiece === 2) {
         dispatch(analyzePiece2Success(sentences))
       } else if (microPiece === 3) {

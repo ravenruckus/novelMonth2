@@ -18,9 +18,11 @@
     "precommit": "yarn test",
     "prepush": "yarn test && yarn prod:build",
     "heroku-postbuild": "yarn prod:build && knex migrate:latest",
-    "knex": "knex"
+    "knex": "knex",
+    "flow": "flow"
   },
   "dependencies": {
+    "axios": "^0.16.0",
     "babel-polyfill": "^6.23.0",
     "body-parser": "^1.17.1",
     "compression": "^1.6.2",
@@ -49,6 +51,8 @@
     "redux-thunk": "^2.2.0",
     "socket.io": "^1.7.3",
     "socket.io-client": "^1.7.3",
+    "text-encoding-utf-8": "^1.0.1",
+    "utf8": "^2.1.2",
     "watson-developer-cloud": "^2.27.1"
   },
   "devDependencies": {

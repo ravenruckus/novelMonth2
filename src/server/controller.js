@@ -35,60 +35,7 @@ export const helloEndpoint = function(num: number)  {
     .where('id', num)
 }
 
-// export const startNewStoryController = function(fbUserId: number) {
-//   return knex('users')
-//           .where('facebook_id', fbUserId)
-//           .then((rows) => {
-//             const user_id = rows[0].id
-//             const user_title = state.createStory.get('title')
-//             const bk_id = 1
-//             const insertNewStory = { user_id, user_title, bk_id }
-//             knex('user_book')
-//             .insert(insertNewStory, '*')
-//           })
+
+// export const startNewStoryController = function(fbUserId: number, user_title: string)  {
 //
-//   //current user passed through from routing, title from state
-//   //find user in database
 // }
-
-export const startNewStoryController = function(fbUserId: number, user_title: string)  {
-//it enters story but doesn't send somehting back so that the action can be successful.
-  // knex('users')
-  //   .where('facebook_id', fbUserId)
-  //     .then((rows) => {
-  //       const user_id = rows[0].id
-  //       const bk_id = 1
-  //       const insertNewStory = { user_id, user_title, bk_id }
-  //       console.log('insert new story', insertNewStory)
-  //       knex('user_book')
-  //        .insert(insertNewStory, '*')
-  //        .then((rows) => {
-  //          console.log('new story made', rows)
-  //          console.log('create story', JSON.stringify(rows[0].user_title))
-  //           // return JSON.stringify(rows[0].user_title)
-  //          res.json({newStory: JSON.stringify(rows[0].user_title)})
-  //        })
-  //      .catch((err) => {
-  //        console.log(err)
-  //      })
-  //    })
-
-  // knex('users')
-  //   .where('facebook_id', fbUserId)
-  //     .then((rows) => {
-  //       const user_id = rows[0].id
-  //       const bk_id = 1
-  //       const insertNewStory = { user_id, user_title, bk_id }
-  //       console.log('insert new story', insertNewStory)
-  //       knex('user_book')
-  //        .insert(insertNewStory, '*')
-  //    })
-  //    .then((rows) => {
-  //      console.log('new story made', rows)
-  //      console.log('create story', JSON.stringify(rows[0].user_title))
-  //      res.json({newStory: JSON.stringify(rows[0].user_title)})
-  //    })
-  //    .catch((err) => {
-  //      console.log(err)
-  //    })
-}
