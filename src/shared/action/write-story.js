@@ -3,8 +3,6 @@
 import 'isomorphic-fetch'
 
 import { createAction } from 'redux-actions'
-// import { ENTER_NEW_STORY } from '../../shared/routes'
-// import { writeStoryReducer } from '../../shared/routes'
 import { analyzePieceRoute, getPieceRoute,  getOriginalRoute } from '../../shared/routes'
 import  utf8  from 'utf8'
 import axios from 'axios'
