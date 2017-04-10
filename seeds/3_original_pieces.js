@@ -889,7 +889,7 @@ exports.seed = function(knex) {
         {
             "color": "white",
             "sentence_id": 6,
-            "text": "There now came a sharp whistling in the air from thesouth, and as they turned their eyes that way they saw ripples in thegrass coming from that direction also.Suddenly Uncle Henry stood up.\"There's a cyclone coming, Em,\" he called to his wife.",
+            "text": "There now came a sharp whistling in the air from the south, and as they turned their eyes that way they saw ripples in the grass coming from that direction also. Suddenly Uncle Henry stood up.\"There's a cyclone coming, Em,\" he called to his wife.",
             "tones": {
                 "category_id": "emotion_tone",
                 "category_name": "Emotion Tone",
@@ -961,7 +961,7 @@ exports.seed = function(knex) {
         {
             "color": "white",
             "sentence_id": 8,
-            "text": "Then he ran toward the sheds where the cows andhorses were kept. Aunt Em dropped her work and came to the door.",
+            "text": "Then he ran toward the sheds where the cows and horses were kept. Aunt Em dropped her work and came to the door.",
             "tones": {
                 "category_id": "emotion_tone",
                 "category_name": "Emotion Tone",
@@ -997,7 +997,7 @@ exports.seed = function(knex) {
         {
             "color": "green",
             "sentence_id": 9,
-            "text": "One glance told her ofthe danger close at hand.\"Quick,",
+            "text": "One glance told her of the danger close at hand.\"Quick,",
             "tones": {
                 "category_id": "emotion_tone",
                 "category_name": "Emotion Tone",

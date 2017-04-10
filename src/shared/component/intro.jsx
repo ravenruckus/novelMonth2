@@ -17,10 +17,10 @@ const Intro = () =>
      <PageHeader>Write a Novel </PageHeader>
   </div>
     <h4>* Write a novel in a month or take your time tackling one tiny piece at a time.</h4>
-    <p>Have you ever thought about writing a novel? It's probably one of the funnest things you could do. I know it sounds overwhelming but it doesn't have to be. That is what this web app is for, to make sure it's not overwhelming. </p>
+    <p>Have you ever thought about writing a novel? It's probably one of the funnest things you could do. I know it sounds overwhelming but it doesn't have to be. That is what this application is for, to make sure it's not overwhelming. </p>
 
     <h3>Why would writing a novel be fun? </h3>
-    <p>Well have you ever read a book or watched a movie and thought, I want to see it this way? Well you can make that happen. Plus when you let go and write what you see in your head you might be surprized by what colorful things you come up with.   Without art life can become too black and white like the opening scenes in the Wizard of OZ. </p>
+    <p>Have you ever read a book or watched a movie and thought, I want to see it this way? Well, you can make that happen. Plus when you let go and write what you see in your head you might be surprized by what colorful things you come up with.   Without art life can become too black and white like the opening scenes in the Wizard of OZ. </p>
 
     <p><i>"Once the house had been painted, but the sun blistered the paint and the rains washed it away, and now the house was as dull and gray as everything else. When Aunt Em came there to live she was a young, pretty wife. The sun and wind had changed her, too. They had taken the sparkle from her eyes and left them a sober gray; they had taken the red from her cheeks and lips, and they were gray also."</i>
   </p>
@@ -43,7 +43,7 @@ const Intro = () =>
    <div className="color-instructions">
   <h4 style={{color: 'rgb(13, 87, 198)'}}> View the emotional range of your piece at a glance. </h4>
   <p>Sentences high in an emotion are highlighted.</p>
-    <img src="https://s3-us-west-2.amazonaws.com/images.aliciagyori.com/emotion_colors2.png" />
+    <img src="https://s3-us-west-2.amazonaws.com/images.aliciagyori.com/colored_emotions.png" alt="colored emotions"/>
   </div>
 
 
@@ -56,12 +56,13 @@ const Intro = () =>
     <li>Each micro piece is accompanied by a snip bit explaining what part of the hero's journey this piece most likely is a part of.</li>
     <li>Each micro piece is also accompanied by writing tips to help you decide what to focus your writing on.</li>
     <li>There is a space for you to enter your writing.</li>
-    <li>Click a the button and you will see an emotional analysis of your writing. </li>
+    <li>Click the button and you will see an emotional analysis of your writing. </li>
   </ul>
 
 
 <div className="start">
   <h2>Lets Get Started</h2>
+  <p>This application is currently in development so you won't be able to login but if you would like a demo please contact me at aliciajgyori@gmail.com.</p>
     <LoginButton />
  </div>
 

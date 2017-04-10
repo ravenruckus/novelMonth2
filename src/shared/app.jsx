@@ -29,7 +29,8 @@ const App = () =>
   <div className="app">
     <Helmet titleTemplate={`%s | ${APP_NAME}`} defaultTitle={APP_NAME} />
     {/* <Nav /> */}
-    <img src="http://media.aliciagyori.com/raventop.png" alt="alicia" />
+    <img className="header-img" src="http://media.aliciagyori.com/raventop.png" alt="alicia" />
+    <img className="header-img-mobile" src="https://s3-us-west-2.amazonaws.com/images.aliciagyori.com/raventop-mobile3.png" />
 
     <Switch>
       <Route exact path={HOME_PAGE_ROUTE} render={() => <HomePage />} />
@@ -42,7 +43,8 @@ const App = () =>
       <Route component={NotFoundPage} />
     </Switch>
 
-    <img src="http://media.aliciagyori.com/ravenbottom.png" alt="raven footer" />
+    <img className="footer-img-mobile" src="https://s3-us-west-2.amazonaws.com/images.aliciagyori.com/ravenbottom-mobile.png" alt="raven footer" />
+    <img className="footer-img" src="http://media.aliciagyori.com/ravenbottom.png" alt="raven footer" />
    </div>
 
 
